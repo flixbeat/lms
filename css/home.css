@@ -1,0 +1,12 @@
+body > .container-fluid{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-shadow: 1px 1px 1px black;
+	background-position: center top;
+	background-image: url('../imgs/bg_lib.jpg');
+	min-height: 50em;
+}
+body > div > div{
+	margin-top: 17em;
+}
