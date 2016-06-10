@@ -172,7 +172,7 @@
 										}
 									?>
 								</select>
-								<input type = "hidden" name = "remarks" value = "1">
+								<input type = "hidden" name = "remarks" >
 							</div>
 						</div>
 					</div>
@@ -193,6 +193,7 @@
 		$('input[name="drMonth"]').val($('#cbMonth').val());
 		$('input[name="drDay"]').val($('#cbDay').val());
 		$('input[name="drYear"]').val($('#cbYear').val());
+		$('input[name="remarks"]').val($('#cbRemarks').val());
 
 		$('#cbMonth').change(function(){
 			$('input[name="drMonth"]').val($(this).val());

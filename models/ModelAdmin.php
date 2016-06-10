@@ -249,7 +249,8 @@
 				edition = $edition, cost_price = $cost, source_of_fund = $sourceId, class = $classId, qty = $qty, remarks = $remarksId";
 
 				# INSERT ALL DATA ENTRY TO DATABASE
-				$this->con->query($query);
+				echo $query;
+				$this->con->query($query) or die($this->con->error);
 				$response .= '<li class = "list-group-item list-group-item-success"><strong><span class = "glyphicon glyphicon-ok-sign"></span> A NEW LIBRARY ASSET HAS BEEN CREATED!</strong></li>';
 			}
 			else{
