@@ -47,7 +47,8 @@
 						<button class = "btn btn-default btn-block"
 							onclick = "location.href='admin.php?action=createBook'"
 							>Create New Book Entry</button>
-						<button class = "btn btn-default btn-block">Edit Existing Book Record</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='admin.php?action=editBook'">Edit Existing Book Record</button>
 					</div>
 				</div>
 			</div>

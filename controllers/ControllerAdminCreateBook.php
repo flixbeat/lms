@@ -6,8 +6,8 @@
 
 		public function invoke(){
 			$data = array('title'=>'Create New Book Entry');
-			$this->loadModel('ModelAdmin');
-			$this->model = new ModelAdmin();
+			$this->loadModel('ModelAdminCreateBook');
+			$this->model = new ModelAdminCreateBook();
 
 			if(!isset($_POST['btnCreateBook'])){
 				// get initial datalist values LIMIT of 10

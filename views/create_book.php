@@ -16,7 +16,7 @@
 							<div class = "form-group">
 								<label>ISBN</label>
 								<input list = "isbn" class = "form-control" name = "isbn" required/>
-								<div class = "isbn_datalist">
+								<div id = "isbn_datalist">
 								<?php
 									echo '<datalist id = "isbn">';
 									foreach($data['isbns'] as $val){
@@ -222,9 +222,22 @@
 			}
 		});
 
+		$('input[list="isbn"]').keyup(function(){
+			$.post('admin.php',{
+				ajax:true,
+				action:'createBook',
+				field:'isbn',
+				chr: $(this).val()
+			},
+				function(data){
+					$('#isbn_datalist').html(data);
+			});
+		});
+
 		$('input[list="title"]').keyup(function(){
 			$.post('admin.php',{
 				ajax:true,
+				action:'createBook',
 				field:'title',
 				chr: $(this).val()
 			},
@@ -237,6 +250,7 @@
 
 			$.post('admin.php',{
 				ajax:true,
+				action:'createBook',
 				field:'publisher',
 				chr: $(this).val()
 			},
@@ -249,6 +263,7 @@
 		$('input[list="author"]').keyup(function(){
 			$.post('admin.php',{
 				ajax:true,
+				action:'createBook',
 				field:'author',
 				chr: $(this).val()
 			},
@@ -260,6 +275,7 @@
 		$('input[list="source"]').keyup(function(){
 			$.post('admin.php',{
 				ajax:true,
+				action:'createBook',
 				field:'source',
 				chr: $(this).val()
 			},
@@ -271,6 +287,7 @@
 		$('input[list="class"]').keyup(function(){
 			$.post('admin.php',{
 				ajax:true,
+				action:'createBook',
 				field:'class',
 				chr: $(this).val()
 			},

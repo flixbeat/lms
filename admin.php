@@ -6,9 +6,13 @@
 			require_once 'controllers/ControllerAdminCreateBook.php';
 			$controller = new ControllerAdminCreateBook();
 		}
+		else if($_GET['action']=='editBook'){
+			require_once 'controllers/ControllerAdminEditBook.php';
+			$controller = new ControllerAdminEditBook();
+		}
 	}
 	# THIS CONDITION WILL ONLY BE EXECUTED BY AJAX CALL
-	else if(isset($_POST['ajax']) && isset($_POST['field']) && isset($_POST['chr'])){
+	else if(isset($_POST['ajax'])){
 		require_once 'controllers/ControllerAdminAjax.php';
 		$controller = new ControllerAdminAjax();
 	}
@@ -16,6 +20,11 @@
 	else if(isset($_POST['btnCreateBook'])){
 		require_once 'controllers/ControllerAdminCreateBook.php';
 		$controller = new ControllerAdminCreateBook();
+	}
+	# ON EDIT FORM SUBMIT
+	else if(isset($_POST['btnEditBook'])){
+		require_once 'controllers/ControllerAdminEditBook.php';
+		$controller = new ControllerAdminEditBook();
 	}
 	// THIS CONDITION IS EXECUTED ON INITIAL ADMIN PAGE LOAD
 	else{
