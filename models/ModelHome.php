@@ -8,6 +8,7 @@
 		public function searchBook($keyword){
 			# floyd's
 			$query = "SELECT 
+					tbks.id as id,
 					tbks.book_number,
 					tbks.qty,
 					tbks.title,
@@ -24,9 +25,33 @@
 					tbl_authors.author like '%$keyword%'OR 
 					tbl_publishers.publisher like '%$keyword%' OR
 					tbl_editions.edition like '%$keyword%' OR
-					qty like '%$keyword%'";
+					qty like '%$keyword%' ORDER BY tbks.title";
 			$res = $this->con->query($query);
 			return $res;
 		}
+
+		public function getBookDetails($bookId){
+			$bookId = $this->sanitizeGET($bookId);
+			$q = "SELECT
+				book_number, 
+				title,
+				(select edition from tbl_editions where id = books.edition) as edition,
+				(select author from tbl_authors where id = books.author) as author,
+				pages,
+				(select publisher from tbl_publishers where id = books.publisher) as publisher,
+				book_year,
+				date_received,
+				(select source_of_fund from tbl_source_of_funds where id = books.source_of_fund) as source_of_fund,
+				cost_price,
+				(select remarks from tbl_remarks where id = books.remarks) as remarks,
+				isbn,
+				(select class from tbl_classes where id = books.class) as class,
+				short_text
+				from tbl_books books where id = $bookId";
+			
+			$res = $this->con->query($q);
+			return $res;
+		}
+
 	}
 ?>

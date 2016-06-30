@@ -29,6 +29,9 @@
 						</div>
 					</div>
 				</div>
+				<div class = "panel-footer">
+					<button class = "btn btn-primary" onclick = "location.href='admin.php'">Back</button>
+				</div>
 			</div>
 		</div>
 		<input type = "hidden" name = "action" value = "editBook">

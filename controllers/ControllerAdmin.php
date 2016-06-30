@@ -1,9 +1,29 @@
 <?php
 	require_once 'Controller.php';
 	class ControllerAdmin extends Controller{
+
+		public $model;
+
 		public function invoke(){
-			$data = array('title'=>'Dashboard');
+			session_start();
 			
+			# redirect if no user session
+			if(!isset($_SESSION['user'])) $this->redirect('admin_login');
+
+			$data = array('title'=>'Dashboard');
+
+			$this->loadModel('ModelAdmin');
+			$this->model = new ModelAdmin();
+
+			$maxGrade = 6;
+			$grades = array();
+
+			for($i=1; $i<=$maxGrade; $i+=1){
+				$grades[$i] = $this->model->getSectionLogin($i);
+			}
+
+			$data['gradesR'] = $grades;
+
 			$this->loadView('head',$data);
 			$this->loadView('navbar',$data);
 			$this->loadView('dashboard',$data);	

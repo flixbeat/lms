@@ -179,6 +179,7 @@
 				</div>	
 			</div>
 			<div class = "panel-footer clearfix">
+				<button class = "btn btn-primary" onclick = "location.href='admin.php'">Back</button>
 				<button class = "btn btn-primary pull-right" name = "btnCreateBook">Save</button>
 			</div>
 		</div>

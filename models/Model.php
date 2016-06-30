@@ -14,5 +14,7 @@
 		public function sanitizeGET($str){
 			return preg_replace("/[^0-9]+/", "", $str); # allows only numbers
 		}
+
+		
 	}
 ?>

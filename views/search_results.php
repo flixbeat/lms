@@ -1,7 +1,6 @@
 <div class = "container-fluid">
-	<form class = "form-inline" action = "index.php" method = "post">
+	<form class = "form" action = "index.php" method = "post">
 		<div class = "form-group">
-			<label>Search Again: </label>
 			<input type = "text" class = "form-control" name = "keyword" value = "<?php echo $_POST['keyword']?>">
 		</div>
 	</form>
@@ -18,7 +17,7 @@
 	</tr>
 	<?php
 		while($row = $data['resultSet']->fetch_assoc()){
-			echo'<tr><td>'. $row['title'].'</td>';
+			echo'<tr><td>'.'<a href = "index.php?bookId='.$row['id'].'">'. $row['title'].'</a></td>';
 			echo'<td>'. $row['author'].'</td>';
 			echo'<td>'. $row['book_number'].'</td>';
 			echo'<td>'. $row['qty'].'</td>';

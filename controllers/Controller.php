@@ -15,6 +15,6 @@
 		protected function goToPreviousPage(){
 			echo '<script>history.go(-1)</script>';
 		}
-
+		
 	}
 ?>

@@ -19,7 +19,10 @@
 		if($data['title']=="LMS - SLSC"){
 			echo '<link rel="stylesheet" type = "text/css" href = "css/home.css">';
 		}
-
 	?>
+	<!-- chart4php -->
+	<script src = "libs/js/jquery.min.js"></script>
+	<script src = "libs/js/chartphp.js"></script>
+	<link rel = "stylesheet" href = "libs/js/chartphp.css">
 </head>
 <body>

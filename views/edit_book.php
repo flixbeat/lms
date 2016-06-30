@@ -126,6 +126,7 @@
 				</div>	
 			</div>
 			<div class = "panel-footer clearfix">
+				<button class = "btn btn-primary" onclick = "backToEdit()">Back</button>
 				<button class = "btn btn-primary pull-right" name = "btnEditBook">Save</button>
 			</div>
 		</div>

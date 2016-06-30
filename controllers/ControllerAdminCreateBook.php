@@ -50,7 +50,6 @@
 				$qty = $_POST['qty'];
 				$remarks = $_POST['remarks'];
 
-
 				# insert data to database and get response message
 				$response = $this->model->createBook(
 					$bookNumber,$isbn,$title,$author,$publisher,
