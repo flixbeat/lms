@@ -37,6 +37,41 @@
 				$this->model = new ModelAdminEditBook();
 				echo $this->model->getBookNumberDetails($bookNumber);
 			}
+			# floyd's
+			else if($action == 'checkBook'){
+				$title1 = "Borrow Book";
+				$data = array('title'=>$title1);
+				$this->loadModel('ModelBorrowBook');
+				$modelBorrow = new ModelBorrowBook();
+				
+					if(!empty($_POST['bookNum'])){
+					$bkNum = $_POST['bookNum'];
+					echo $modelBorrow->checkBook($bkNum);
+					//echo $modelBorrow->title;
+					//$this->loadView('borrow_book',$data = array('bkNum'=>$modelBorrow->bkNum,'bkTitle'=>$modelBorrow->title));
+					}
+				
+			}
+			else if($action == 'returnBook'){
+				$title1 = "Return Book";
+				$data = array('title'=>$title1);
+				$this->loadModel('ModelReturnBook');
+				$modelR = new ModelReturnBook();
+				
+				if(!empty($_POST['bookNum'])){
+					$bkNum = $_POST['bookNum'];
+					$stuNum = $_POST['stuNum'];
+					echo $modelR->checkBook($bkNum,$stuNum);
+				}
+				
+			}
+			# mine
+			else if($action == 'printAuthorCard'){
+				$bookId = $_POST['bookId'];
+				$this->loadModel('ModelAuthorCard');
+				$this->model = new ModelAuthorCard();
+				echo $this->model->printPreview($bookId);
+			}
 		}
 
 		private function loadAjaxHelper($filename){

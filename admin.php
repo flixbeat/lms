@@ -10,6 +10,20 @@
 			require_once 'controllers/ControllerAdminEditBook.php';
 			$controller = new ControllerAdminEditBook();
 		}
+		else if($_GET['action']=='logout'){
+			session_start();
+			session_destroy();
+			header('Location: index.php');
+		}
+		# floyd's
+		else if($_GET['action']=='borrowBook'){
+			require_once 'controllers/ControllerBorrowBook.php';
+			$controller = new ControllerBorrowBook();
+		}
+		else if($_GET['action']=='studentIn'){
+			require_once 'controllers/ControllerStudentTracker.php';
+			$controller = new ControllerStudentTracker();
+		}
 	}
 	# THIS CONDITION WILL ONLY BE EXECUTED BY AJAX CALL
 	else if(isset($_POST['ajax'])){

@@ -1,0 +1,19 @@
+#print-preview-container{
+		font-family: 'times';
+		font-size: 24px;
+		padding: 30px;
+		border: 1px solid #d3d3d3;
+		box-shadow: -7px 7px 7px gray;
+		width: 5in;
+		height: 3in;
+		margin: auto;
+	}
+	#author-card-body{
+		margin-left: 30px;
+	}
+	#title{
+		text-indent: 60px;
+	}
+	#pages, #isbn, #tracing{
+		margin-left: 60px;
+	}

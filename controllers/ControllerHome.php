@@ -24,12 +24,10 @@
 			$this->loadView('head',$data);
 			
 			if(isset($_POST['keyword'])) {
-				$this->loadView('navbar',null);
 				$this->loadView('search_results',$data);
 			}
 			else if(isset($_GET['bookId'])){
 				$data['bookDetails'] = $this->modelHome->getBookDetails($_GET['bookId']);
-				$this->loadView('navbar',null);
 				$this->loadView('book_details',$data);
 			}
 			else $this->loadView('home',$data);

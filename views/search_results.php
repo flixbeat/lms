@@ -1,10 +1,15 @@
+
 <div class = "container-fluid">
+	<h3>Search Results</h3>
+	<hr>
 	<form class = "form" action = "index.php" method = "post">
 		<div class = "form-group">
-			<input type = "text" class = "form-control" name = "keyword" value = "<?php echo $_POST['keyword']?>">
+			<div class = "input-group">
+				<input type = "text" class = "form-control" name = "keyword" value = "<?php echo $_POST['keyword']?>">
+				<div class="input-group-addon"><span class = "glyphicon glyphicon-search"></span> Search</div>
+			</div>
 		</div>
 	</form>
-	<h3>Search Result</h3>
 	<table class ="table">
 	<tr>
 		<th>Title</th>
@@ -28,3 +33,13 @@
 	?>
 	</table>
 </div>
+<style type="text/css">
+	.input-group-addon{
+		cursor: pointer;
+	}
+</style>
+<script type="text/javascript">
+	$('.input-group-addon').click(function(){
+		$('form').submit();
+	});
+</script>

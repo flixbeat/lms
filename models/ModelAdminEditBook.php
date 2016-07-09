@@ -149,8 +149,8 @@
 				$bookId = $row['id'];
 
 				$query = "UPDATE tbl_books SET book_number = $bookNumber, isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
-				short_text = '$desc', pages = $pages, book_year = $year, date_received = '$dateReceived', 
-				edition = $edition, cost_price = $cost, source_of_fund = $sourceId, class = $classId, qty = $qty, remarks = $remarksId 
+				short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
+				edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', availability = '$qty', remarks = '$remarksId' 
 				WHERE id = $bookId";
 
 				# UPDATE ALL DATA ENTRY TO DATABASE

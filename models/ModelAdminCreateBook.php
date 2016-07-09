@@ -131,6 +131,8 @@
 			$qty = $this->sanitize($qty);
 			$remarks = $this->sanitize($remarks);
 
+			# checking empty fields and and setting defaults
+
 
 			# flag to determine if there are any entry flaws, if there is/are, 
 			# then this will be set to true -> prohibiting insertion of
@@ -207,13 +209,16 @@
 			$classId = null;
 			$query = "SELECT id FROM tbl_classes WHERE class LIKE '$class'";
 			$res = $this->con->query($query);
-			if($res->num_rows == 0) {
-				$response .= '<li class = "list-group-item"><span class = "text-danger"><span class = "glyphicon glyphicon-remove-sign"></span> <strong>CLASS</strong> does not exist.</span></li>';
-				$errorFlag = true;
-			}
-			else{
+			if($res->num_rows > 0) {
 				$row = $res->fetch_assoc();
 				$classId = $row['id'];
+				
+			}
+			else{
+				$query = "INSERT INTO tbl_classes SET class = '$class'";
+				$res = $this->con->query($query);
+				$classId = $this->con->insert_id;
+				$response .= '<li class = "list-group-item"><span class = "text-success"><span class = "glyphicon glyphicon-info-sign"></span> A new <strong>CLASS</strong> has been created.</span></li>';
 			}
 
 			# remarks
@@ -225,8 +230,8 @@
 			# if there are no input errors detected, then the data will be inserted to book table
 			if(!$errorFlag){
 				$query = "INSERT INTO tbl_books SET book_number = $bookNumber, isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
-				short_text = '$desc', pages = $pages, book_year = $year, date_received = '$dateReceived', 
-				edition = $edition, cost_price = $cost, source_of_fund = $sourceId, class = $classId, qty = $qty, remarks = $remarksId";
+				short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
+				edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', availability = '$qty', remarks = '$remarksId'";
 
 				# INSERT ALL DATA ENTRY TO DATABASE
 				$this->con->query($query) or die($this->con->error);

@@ -4,14 +4,14 @@
 			<a class = "navbar-brand" href = "#">Library System</a>
 
 		</div>
+
 		<ul class = "nav navbar-nav">
-			<?php 
-				if(basename($_SERVER['PHP_SELF'])=="admin.php"){
-					echo '
-						<li><a href="admin.php">Dashboard</a></li>
-					';
-				}
-			?>
+			<li><a href="admin.php">Dashboard</a></li>
+			<li><a href="index.php">Student Search</a></li>
+		</ul>
+
+		<ul class = "nav navbar-nav navbar-right">
+			<li><a href="admin.php?action=logout"><span class = "glyphicon glyphicon-log-out"></span> Logout</a></li>
 		</ul>
 	</div>
 </nav>
