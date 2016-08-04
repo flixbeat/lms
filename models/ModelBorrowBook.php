@@ -3,81 +3,88 @@
 
 	class ModelBorrowBook extends ModelAdmin{
 		
-		public $checker;
-		public $title;
-		public $bkNum;
-		public $book_qty;
-		public $avail;
-		public $name;
-		public $pwede;
-
+		public $chkStudent;
+		public $brChecker;
+		public $sameBkChkr;
+		public $dueChk;
+		public $totalRec;
 		public function __construct(){
 			parent::__construct();
 		}	
 
-		public function checkBook($bkNum){
-			$bkNum = $this->sanitizeGET($bkNum);
-			$qry = "SELECT title,book_number,availability FROM tbl_books WHERE book_number = $bkNum";
+		public function compareDueDate($dDate){
+			$qry = "SELECT '$dDate'>=curDate() as dueDate";
 			$res = $this->con->query($qry);
+			while ($row = $res->fetch_assoc()) {
+				$this->dueChk = $row['dueDate'];
+			}
+		}
+		public function selBookClass(){
+			$qry = "SELECT class FROM tbl_classes";
+			$res = $this->con->query($qry);
+			return $res;
+
+		}
+
+		public function selBook($class){
+			$qry = "SELECT id,book_number,title,copy,if(availability = 1,'Available','Unavailable') as stat, availability FROM tbl_books WHERE class = (select id from tbl_classes where class = '$class') ORDER BY copy ASC";
+			$res = $this->con->query($qry);
+			return $res;
+		}
+
+		public function borrowBook($bkId,$sId,$dDate){
+			$sy = $this->getCurrentSchoolYearId();
+			$qry = "INSERT INTO tbl_borrowing_logbook (book_id,student_id,cur_date,due_date,school_year_id,return_status) VALUES ($bkId,(select id from tbl_students where student_num = $sId),curDate(),'$dDate',$sy,0)";
+			$res = $this->con->query($qry); 
 			
-			if($res->num_rows>=1){
-				while($row = $res->fetch_assoc() ){
-					$bkNum = $row['book_number'];
-					$title = $row['title'];
-					$book_qty = $row['availability'];
-				}
-			}
-			else{
-				$bkNum = "N/A";
-				$title = "N/A";
-				$book_qty = "N/A";
-			}
-			return "$bkNum|$title|$book_qty";
 		}
 
-		public function checkerBorrow($bookNum,$idNum){
-			$qry = "SELECT * FROM tbl_borrowing_logbook WHERE book_id = (select id from tbl_books where book_number = $bookNum) AND student_id = (select id from tbl_students s where s.student_num = $idNum) AND cur_date = curDate() AND return_status =0";
+		public function upAvailability($bkId){
+			$qry2 = "UPDATE tbl_books SET availability = 0 WHERE id = $bkId";
+			$res2 = $this->con->query($qry2);
+		}
+
+		#check if student exists
+		public function selStudent($sId){
+			$qry = "SELECT * FROM tbl_students WHERE student_num = '$sId'";
 			$res = $this->con->query($qry);
-			if($res->num_rows==1){
-				$this->pwede = 0;
+			if($res->num_rows == 1){
+				$this->chkStudent = "studentExists";
 			}
-			else{
-				$this->pwede = 1;
+			else if($res->num_rows == 0){
+				$this->chkStudent = "studentNotExists";
 			}
-
 		}
-		public function borrowBook($bookNum,$idNum,$dueDate){
-			echo $this->bkNum;
-			$book_id;
-			$stu_id;
-			$avail;
-			$qry0 = "SELECT id,student_name FROM tbl_students WHERE student_num = $idNum";
-			$res0 = $this->con->query($qry0);
-				if($res0->num_rows==1){
-					while ($row0 = $res0->fetch_assoc()) {
-						$stu_id = $row0['id'];
-						$this->name = $row0['student_name'];
-					}
-				}
 
-			$qry1 = "SELECT id,availability FROM tbl_books WHERE book_number = $bookNum";
-			$res1 = $this->con->query($qry1);
-				if($res1->num_rows==1){
-					while($row1 = $res1->fetch_assoc() ){
-						$book_id = $row1['id'];
-						$this->avail = $row1['availability'];
-					}
+		public function checkBorrowRecord($bkId,$sId){
+			$qry = "SELECT count(*) as totalRec FROM tbl_borrowing_logbook WHERE student_id = (select id from tbl_students where student_num = '$sId') AND cur_date = curDate() AND return_status = 0";
+			$res = $this->con->query($qry);
+			if($res->num_rows == 1){
+				while ($row = $res->fetch_assoc()) {
+					$this->totalRec = $row['totalRec'];
 				}
-			$qry2 = "INSERT INTO tbl_borrowing_logbook (book_id,student_id,cur_date,due_date,return_status) VALUES ($book_id,$stu_id,curDate(),'$dueDate',0)";
-					$res2 = $this->con->query($qry2);
-					if($res2){
-						$this->avail-=1;
-					}
+			}
+		}
 
-			$qry3 = "UPDATE tbl_books SET availability = $this->avail WHERE book_number = $bookNum";
-					$res3 = $this->con->query($qry3);
-					
-			return $this->name;
+		public function checkBorrowExist($bkId,$sId){
+			$title;
+			$qry1 = "SELECT title FROM tbl_books WHERE id  = $bkId";
+			$res1  = $this->con->query($qry1);
+			if($res1->num_rows ==1){
+				while($row1 = $res1->fetch_assoc()){
+					$title = $row1['title'];
+				}
+			}
+
+			$qry2 = "SELECT * FROM tbl_borrowing_logbook WHERE student_id = (select id from tbl_students where student_num = '$sId')AND return_status = 0 AND book_id = (SELECT id from tbl_books where title = '$title' LIMIT 1)";
+			$res2 = $this->con->query($qry2);
+			if($res2->num_rows > 0){
+				$this->sameBkChkr = "sameBook";
+			}
+			else if($res2->num_rows == 0){
+				$this->sameBkChkr = "notSameBook";
+			}
+
 		}
 	}
 ?>

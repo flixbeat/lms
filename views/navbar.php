@@ -11,7 +11,7 @@
 		</ul>
 
 		<ul class = "nav navbar-nav navbar-right">
-			<li><a href="admin.php?action=logout"><span class = "glyphicon glyphicon-log-out"></span> Logout</a></li>
+			<li><a href="admin.php?action=searchBook"><span class = "glyphicon glyphicon-log-out"></span> Logout</a></li>
 		</ul>
 	</div>
 </nav>

@@ -1,5 +1,5 @@
 <div class = "container-fluid">
-	<h3>DASHBOARD</h3>
+	<h3>DASHBOARD <small>SY <?=$data['sy']?></small></h3>
 	<hr>
 	<div class = "row">
 		<div class = "col-sm-4">
@@ -19,23 +19,29 @@
 						</div>
 						<div class = "col-sm-4">
 							<button class = "btn btn-default" data-toggle = "modal" data-target = "#book-br-modal"><img src = "imgs/br.png" class = "img-responsive"></button>
-							<!--button class = "btn btn-default" onclick = "location.href='admin.php?action=borrowBook'"><img src = "imgs/add-book.png"></button-->
 							<br>Book Borrowing & Returning
 						</div>
 					</div>
 					<hr>
 					<div class = "row">
 						<div class = "col-sm-4">
-							<td><button class = "btn btn-default" onclick = "location.href='admin.php?action=studentIn'"><img src = "imgs/graph.png" class = "img-responsive"></button>
+							<td><button class = "btn btn-default" onclick = "location.href='student_tracker.php'"><img src = "imgs/graph.png" class = "img-responsive"></button>
 							<br>Student Tracker
 						</div>
 						<div class = "col-sm-4">
-							<button class = "btn btn-default"><img src = "imgs/manage-student.png" class = "img-responsive"></button>
+							<button class = "btn btn-default" data-toggle = "modal" data-target = "#manage-student-modal"><img src = "imgs/manage-student.png" class = "img-responsive"></button>
 							<br>Manage Student Data
 						</div>
 						<div class = "col-sm-4">
-							<button class = "btn btn-default"><img src = "imgs/add-book.png" class = "img-responsive"></button>
-							<br>Label
+							<button class = "btn btn-default" onclick = "location.href='user_management.php'"><img src = "imgs/users.png" class = "img-responsive"></button>
+							<br>User Management
+						</div>
+					</div>
+					<hr>
+					<div class = "row">
+						<div class = "col-sm-4">
+							<td><button class = "btn btn-default" data-toggle = "modal" data-target = "#add-rules-modal"><img src = "imgs/rules.png" class = "img-responsive"></button>
+							<br>System Rules
 						</div>
 					</div>
 					
@@ -67,7 +73,7 @@
 
 						#array_push($p->data,array(array("Section 7-1",100)));
 
-						$p->title = "Sections with the most library logins per level."; 
+						$p->title = "Sections with the most library logins per level. SY " . $data['sy']; 
 						$p->ylabel = "Login Count"; 
 						$p->xlabel = "Level"; 
 						
@@ -100,6 +106,8 @@
 							>Create New Book Entry</button>
 						<button class = "btn btn-default btn-block"
 							onclick = "location.href='admin.php?action=editBook'">Edit Existing Book Record</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='activate_book.php'">Activate / Deactivate Books</button>
 					</div>
 				</div>
 			</div>
@@ -138,11 +146,66 @@
 					</div>
 					<div class = "modal-body">
 						<button class = "btn btn-default btn-block"
+							onclick = "location.href='masterlist_report.php'"
+							>Master List</button>
+						<button class = "btn btn-default btn-block"
 							onclick = "location.href='author_card_report.php'"
 							>Author Card</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href = 'top_ten.php?type=tabular'"
+							>Top 10 (Tabular)</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href = 'top_ten.php?type=chart'"
+							>Top 10 (Chart)</button>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!--book add/update student modal-->
+		<div class = "modal fade" id = "manage-student-modal" tabindex = "-1" role = "dialog" aria-labelledby = "book-br" aria-hidden = "true">
+			<div class = "modal-dialog modal-sm">
+				<div class = "modal-content">
+					<div class = "modal-header">
+						<button type = "button" class = "close" data-dismiss = "modal" aria-label="close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class = "modal-title" id = "manage-book">Manage Student Data</h4>
+					</div>
+					<div class = "modal-body">
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='student_add.php?action=addStudent'"
+							>Add Student Data</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='student_edit.php?action=editStudent'">Update Student Data</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='student_search.php?action=searchStudent'">View Student Data</button>
+						<hr>
+						<button class = "btn btn-default btn-block"
+								onclick = "location.href='student_manage.php'">General Student Management</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- add rule modal-->
+		<div class = "modal fade" id = "add-rules-modal" tabindex = "-1" role = "dialog" aria-labelledby = "book-br" aria-hidden = "true">
+			<div class = "modal-dialog modal-sm">
+				<div class = "modal-content">
+					<div class = "modal-header">
+						<button type = "button" class = "close" data-dismiss = "modal" aria-label="close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class = "modal-title" id = "manage-book">System Rules</h4>
+					</div>
+					<div class = "modal-body">
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='rule_add.php?action=addRules'"
+							>Add Rules</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 </div>

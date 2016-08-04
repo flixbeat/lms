@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $data['title'];?></title>
+	<title><?=$data['title']?></title>
 	<meta charset = "utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,10 @@
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	<script src = "libs/js/jquery-1.12.3.min.js"></script>
+
+	<script src = "libs/js/jquery-ui.js"></script>
 	<script src = "libs/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
 	<?php 
 		if($data['title']=="LMS - SLSC"){
@@ -21,7 +24,6 @@
 		}
 	?>
 	<!-- chart4php -->
-	<script src = "libs/js/jquery.min.js"></script>
 	<script src = "libs/js/chartphp.js"></script>
 	<link rel = "stylesheet" href = "libs/js/chartphp.css">
 </head>

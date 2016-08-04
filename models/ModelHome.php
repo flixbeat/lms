@@ -1,31 +1,45 @@
 <?php
-	require_once 'Model.php';
-	class ModelHome extends Model{
+	require_once 'ModelAdmin.php';
+	class ModelHome extends ModelAdmin{
 		public function __construct(){
 			$this->connectDB();
 		}
 
 		public function searchBook($keyword){
 			# floyd's
-			$query = "SELECT 
-					tbks.id as id,
-					tbks.book_number,
-					tbks.qty,
-					tbks.title,
-					(select author from tbl_authors where id = tbks.author) as author,
-					(select edition from tbl_editions where id = tbks.edition) as edition,
-					(select publisher from tbl_publishers where id = tbks.publisher) as publisher,
-					tbks.book_year
-					FROM tbl_books tbks INNER JOIN tbl_authors ON tbks.author = tbl_authors.id 
-					INNER JOIN tbl_publishers ON tbks.publisher = tbl_publishers.id
-					INNER JOIN tbl_editions ON tbks.edition = tbl_editions.id
-					WHERE title LIKE '%$keyword%' OR 
-					book_number like '%$keyword%' OR 
-					book_year like '%$keyword%'OR 
-					tbl_authors.author like '%$keyword%'OR 
-					tbl_publishers.publisher like '%$keyword%' OR
-					tbl_editions.edition like '%$keyword%' OR
-					qty like '%$keyword%' ORDER BY tbks.title";
+			$query = "SELECT
+				books.id,
+				book_number, 
+				title,
+				(select edition from tbl_editions where id = books.edition) as edition,
+				au.author as author,
+				pages,
+				pub.publisher as publisher,
+				book_year,
+				date_received,
+				sf.source_of_fund,
+				cost_price,
+				rm.remarks,
+				isbn,
+				cls.class as class,
+				copy,
+				status
+				from tbl_books books 
+				INNER JOIN tbl_classes cls ON books.class = cls.id 
+				INNER JOIN tbl_authors au ON books.author = au.id 
+				INNER JOIN tbl_publishers pub ON books.publisher = pub.id
+				INNER JOIN tbl_source_of_funds sf ON books.source_of_fund = sf.id 
+				INNER JOIN tbl_remarks rm ON books.remarks = rm.id
+				WHERE (books.title LIKE '%$keyword%' 
+				OR books.author LIKE '%$keyword%' 
+				OR pub.publisher LIKE '%$keyword%'
+				OR books.book_year LIKE '%$keyword%'
+				OR books.book_number LIKE '%$keyword%'
+				OR books.isbn LIKE '%$keyword%'
+				OR books.edition LIKE '%$keyword%'
+				OR cls.class LIKE '%$keyword%') AND books.status LIKE 'A'
+				GROUP BY books.title ORDER BY books.title
+				";
 			$res = $this->con->query($query);
 			return $res;
 		}

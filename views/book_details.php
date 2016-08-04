@@ -10,10 +10,10 @@
 			<div class = "row">
 				<div class = "col-sm-6">
 					<table class = "table">
-						<tr>
-							<td><strong>Book Number: </strong></td>
+						<!--tr>
+							<td><strong>Access Number: </strong></td>
 							<td><?=$row['book_number']?></td>
-						</tr>
+						</tr-->
 						<tr>
 							<td><strong>ISBN: </strong></td>
 							<td><?=$row['isbn']?></td>
@@ -65,7 +65,10 @@
 			</div>
 		</div>
 		<div class = "panel-footer">
-			<button class = "btn btn-primary" onclick = "history.go(-1)">Back</strong>
+			<form method = "post" action = "index.php">
+				<input type = "hidden" class = "form-control" name = "keyword" value = "<?=$_SESSION['keyword']?>">
+				<button class = "btn btn-primary">Back</strong>
+			</form>
 		</div>
 	</div>
 </div>

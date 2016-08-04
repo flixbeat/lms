@@ -27,7 +27,7 @@
 					</div>
 					<div class = "panel-footer clearfix">
 						<button class="btn btn-warning" onclick= "location.href='admin.php'">Ok (Dashboard)</button>
-						<button class="btn btn-success pull-right" onclick= "location.href='admin.php'">Back to borrowing</button>
+						<button class="btn btn-success pull-right" onclick= "location.href='borrow.php'">Back to borrowing</button>
 					</div>
 				</div>
 			</div>

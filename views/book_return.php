@@ -13,13 +13,12 @@
 						<div class = "form-group">
 							<p><?php echo "Today's Date " . date("Y/m/d")?></p>
 							<label>Student Number</label>
-							<input type="text" class="form-control"	id = "tfStNum" name="tfStNum"><br>
-							<label>Book Number</label>
-							<input type="text" class="form-control" id = "tfBkNum" name="tfBkNum">
-							<input type = "hidden" value="<?php echo $data['bookNum']?>" name="hidBkNum">
-							<input type = "hidden" value="<?php echo $data['bookTitle']?>" name="bkTitle">
+							<input type="text" class="form-control"	id = "tfStNum" name="tfStNum" required><br>
+							<label>Access Number</label>
+							<input type="number" class="form-control" id = "tfBkNum" name="tfBkNum" required>
+							<input type = "hidden" id = "idHid"  name = "idHid">
+							<input type = "hidden" id = "HidDueDate"  name = "HidDueDate">
 						</div>
-						<input type="hidden" id = "idHid" name = "idHid" value="">
 						<div class = "pull-right">
 								<button id="btnRet" name="btnRet" class="btn btn-primary">Return Book</button>
 						</div>
@@ -80,11 +79,13 @@
 					success: function(data){
 						var bkArrt = data.split("|");
 						$('#idHid').val(bkArrt[0]);
+						$('#HidDueDate').val(bkArrt[1]);
 						$('#infoDueDate').val(bkArrt[1]);
 						$('#infoNum').val(bkArrt[2]);
 						$('#infoTitle').val(bkArrt[3]);
 						$('#infoStNum').val(bkArrt[4]);
 						$('#infoStName').val(bkArrt[5]);
+
 						//$('#tae').html(data);
 						
 						
@@ -92,8 +93,8 @@
 						
 					}
 				});
-			});	
-			
+
+			});		
 	});
 
 </script>

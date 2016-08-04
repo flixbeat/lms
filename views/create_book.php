@@ -10,8 +10,21 @@
 						<div class = "col-md-4">
 							<div class = "well well-md"><strong>1 Basic Info</strong> <small>(all fields required)</small></div>
 							<div class = "form-group">
-								<label>Book Number</label>
+								<label>Access Number</label>
 								<input type = "number" class = "form-control" name = "bookNumber" value = "<?php echo $data['maxBookNumber']+1;?>"/>
+							</div>
+							<div class = "form-group">
+								<label>Class</label>
+								<input list = "class" class = "form-control" name = "class" required/>
+								<div id = "class_datalist">
+								<?php
+									echo '<datalist id = "class">';
+									foreach($data['class'] as $val){
+										echo '<option value = "'.$val.'">';
+									}
+									echo '</datalist>';
+								?>
+								</div>
 							</div>
 							<div class = "form-group">
 								<label>ISBN</label>
@@ -65,12 +78,20 @@
 								?>
 								</div>
 							</div>
+							<div class = "form-group">
+								<label>Number of Copies</label> <small>(2 or more copies will generate additional access number.)</small>
+								<input type = "number" class = "form-control" min = "1" value = "1" name = "copies" required >
+							</div>
 						</div>
 						<div class = "col-md-4">
 							<div class = "well well-md"><strong>2 Core Info</strong></div>
 							<div class = "form-group">
 								<label>Text Overview</label>
 								<textarea class = "form-control" style = "resize:none;" rows = "5" name = "description"></textarea>
+							</div>
+							<div class = "form-group">
+								<label>Subject Heading / Tracing</label>
+								<input type = "text" class = "form-control" name = "tracing">
 							</div>
 							<div class = "form-group">
 								<label>Pages</label>
@@ -123,6 +144,7 @@
 							</div>
 
 						</div>
+
 						<div class = "col-md-4">
 							<div class = "well well-md"><strong>3 Additional Info</strong></div>
 							<div class = "form-group">
@@ -146,22 +168,13 @@
 								?>
 								</div>
 							</div>
-							<div class = "form-group">
-								<label>Class</label>
-								<input list = "class" class = "form-control" name = "class"/>
-								<div id = "class_datalist">
-								<?php
-									echo '<datalist id = "class">';
-									foreach($data['class'] as $val){
-										echo '<option value = "'.$val.'">';
-									}
-									echo '</datalist>';
-								?>
-								</div>
-							</div>
-							<div class = "form-group">
+							<!--div class = "form-group">
 								<label>Stock / Quantity</label>
-								<input type = "number" class = "form-control" name = "qty"/>
+								<input type = "number" class = "form-control" name = "qty" value = "1"/>
+							</div-->
+							<div class = "form-group">
+								<label>Special Features</label>
+								<input type = "text" class = "form-control" name = "special_features">
 							</div>
 							<div class = "form-group">
 								<label>Remarks</label> <small>(optional)</small>

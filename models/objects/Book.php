@@ -17,6 +17,9 @@
 		public $classId;
 		public $qty;
 		public $remarksId;
+		public $copy;
+		public $tracing;
+		public $sf;
 
 		public function __construct($bookId){
 			$this->connectDB();
@@ -38,6 +41,9 @@
 			$this->classId = $row['class'];
 			$this->qty = $row['qty'];
 			$this->remarksId = $row['remarks'];
+			$this->copy = $row['copy'];
+			$this->tracing = $row['tracing'];
+			$this->sf = $row['special_features'];
 		}
 
 		public function getAuthorText(){

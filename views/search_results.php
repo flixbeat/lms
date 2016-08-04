@@ -1,5 +1,5 @@
-
 <div class = "container-fluid">
+	<button class = "btn btn-default pull-right" onclick = "location.href = 'index.php'"><span class = "glyphicon glyphicon-home"></span> Home</button>
 	<h3>Search Results</h3>
 	<hr>
 	<form class = "form" action = "index.php" method = "post">
@@ -14,8 +14,9 @@
 	<tr>
 		<th>Title</th>
 		<th>Author</th>	
-		<th>Book Number</th>		
-		<th>Available</th>
+		<th>Class</th>	
+		<!--th>Access Number</th-->		
+		<!--th>Available</th-->
 		<th>Edition</th>
 		<th>Publisher</th>
 		<th>Year</th>	
@@ -24,8 +25,9 @@
 		while($row = $data['resultSet']->fetch_assoc()){
 			echo'<tr><td>'.'<a href = "index.php?bookId='.$row['id'].'">'. $row['title'].'</a></td>';
 			echo'<td>'. $row['author'].'</td>';
-			echo'<td>'. $row['book_number'].'</td>';
-			echo'<td>'. $row['qty'].'</td>';
+			echo'<td>'. $row['class'].'</td>';
+			#echo'<td>'. $row['book_number'].'</td>';
+			#echo'<td>'. $row['qty'].'</td>';
 			echo'<td>'. $row['edition'].'</td>';
 			echo'<td>'. $row['publisher'].'</td>';
 			echo'<td>'. $row['book_year'].'</td></tr>';

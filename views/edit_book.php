@@ -10,10 +10,25 @@
 						<div class = "col-md-4">
 							<div class = "well well-md"><strong>1 Basic Info</strong> <small>(all fields required)</small></div>
 							<div class = "form-group">
-								<label>Book Number</label>
-								<span class = "text-danger"><small>(Warning, changing the book number will overwrite existing records.)</small></span>
-								<input type = "number" class = "form-control" name = "bookNumber" value = "<?php echo $data['bookNumber'];?>" required/>
+								<label>Access Number: <?=$data['bookNumber'];?></label>
+								<!--span class = "text-danger"><small>(Warning, changing the book number will overwrite existing records.)</small></span-->
+								<input type = "hidden" class = "form-control" name = "bookNumber" value = "<?php echo $data['bookNumber'];?>" required />
 							</div>
+							<div class = "row">
+								<div class = "col-sm-8">
+									<div class = "form-group">
+										<label>Class</label>
+										<input type = "text" class = "form-control" name = "class" value = "<?php echo $data['class'];?>" required/>
+									</div>
+								</div>
+								<div class = "col-sm-4">
+									<div class = "form-group">
+										<label>Copy (C)</label>
+										<input type = "text" class = "form-control" name = "copy" value = "<?php echo $data['copy'];?>" required/>
+									</div>
+								</div>
+							</div>
+							
 							<div class = "form-group">
 								<label>ISBN</label>
 								<input type = "text" class = "form-control" name = "isbn" value = "<?php echo $data['isbn'];?>" required/>
@@ -36,6 +51,10 @@
 							<div class = "form-group">
 								<label>Text Overview</label>
 								<textarea class = "form-control" style = "resize:none;" rows = "5" name = "description" ><?php echo $data['shortText'];?></textarea>
+							</div>
+							<div class = "form-group">
+								<label>Subject Heading / Tracing</label>
+								<input type = "text" class = "form-control" name = "tracing" value = "<?php echo $data['tracing'];?>" >
 							</div>
 							<div class = "form-group">
 								<label>Pages</label>
@@ -102,13 +121,13 @@
 								<label>Source of Fund</label>
 								<input type = "text" class = "form-control" name = "source" value = "<?php echo $data['source'];?>" />
 							</div>
-							<div class = "form-group">
-								<label>Class</label>
-								<input type = "text" class = "form-control" name = "class" value = "<?php echo $data['class'];?>" />
-							</div>
-							<div class = "form-group">
+							<!--div class = "form-group">
 								<label>Stock / Quantity</label>
 								<input type = "number" class = "form-control" name = "qty" value = "<?php echo $data['qty'];?>" />
+							</div-->
+							<div class = "form-group">
+								<label>Special Features</label>
+								<input type = "text" class = "form-control" name = "special_features" value = "<?php echo $data['sf'];?>">
 							</div>
 							<div class = "form-group">
 								<label>Remarks</label> <small>(optional)</small>

@@ -12,7 +12,7 @@
 
 	 		if(isset($_POST['uname'])){
 	 			$uname = $_POST['uname'];
-	 			$pword = md5($_POST['pword']);
+	 			$pword = $_POST['pword'];
 	 			$userId = $model->loginAcc($uname,$pword);
 
 	 			if($userId != 0){

@@ -37,6 +37,13 @@
 				$this->model = new ModelAdminEditBook();
 				echo $this->model->getBookNumberDetails($bookNumber);
 			}
+			else if($action == "setActive"){
+				$bookId = $_POST['bookId'];
+				$status = $_POST['status'];
+				$this->loadModel('ModelActivateBook');
+				$this->model = new ModelActivateBook();
+				$this->model->setActive($status,$bookId);
+			}
 			# floyd's
 			else if($action == 'checkBook'){
 				$title1 = "Borrow Book";
@@ -65,6 +72,36 @@
 				}
 				
 			}
+			else if($action == 'selSection'){
+				$this->loadModel('ModelEditStudent');
+				$model = new ModelEditStudent();
+				
+				if(isset($_POST['grdStr'])){
+					$grd = $_POST['grdStr'];
+					$model->selSection($grd);	
+				}
+			}
+			else if($action == 'selStudent'){
+				if(isset($_POST['sNum'])){
+					$sNum = $_POST['sNum'];
+					$this->loadModel('ModelAddStudent');
+					$model = new ModelAddStudent();
+					$model->selStudent($sNum);
+
+					echo $checker = $model->stExist;
+				}
+			}	
+			else if($action == 'selHistory'){
+				if(isset($_POST['d1'])){
+					$id = $_POST['sId'];
+					$d1 = $_POST['d1'];
+					$d2 = $_POST['d2'];
+					$this->loadModel('ModelSearchStudent');
+					$model = new ModelSearchStudent();
+					$model->filterByDate($id,$d1,$d2);
+					
+				}
+			}	
 			# mine
 			else if($action == 'printAuthorCard'){
 				$bookId = $_POST['bookId'];

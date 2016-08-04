@@ -25,7 +25,7 @@
 		public function editBook(
 			$bookNumber,$isbn,$title,$author,$publisher,
 			$desc,$pages,$year,$dateReceived,
-			$edition,$cost,$source,$class,$qty,$remarks
+			$edition,$cost,$source,$class,$qty,$remarks,$copy,$tracing,$sf
 		){
 			$bookNumber = $this->sanitize($bookNumber);
 			$isbn = $this->sanitize($isbn);
@@ -44,6 +44,10 @@
 			$class = $this->sanitize($class);
 			$qty = $this->sanitize($qty);
 			$remarks = $this->sanitize($remarks);
+
+			$tracing = $this->sanitize($tracing);
+			$sf = $this->sanitize($sf);
+			$copy = $this->sanitize($copy);
 
 			# flag to determine if there are any entry flaws, if there is/are, 
 			# then this will be set to true -> prohibiting insertion of
@@ -134,6 +138,25 @@
 				$response .= '<li class = "list-group-item"><span class = "text-success"><span class = "glyphicon glyphicon-info-sign"></span> A new <strong>CLASS</strong> has been created.</span></li>';
 			}
 
+			# number of copies
+			if($copy < 1){
+				$response .= '<li class = "list-group-item"><span class = "text-danger"><span class = "glyphicon glyphicon-remove-sign"></span> Number of <strong>COPIES</strong> should be atleast 1.</span></li>';
+				$errorFlag = true;
+			}
+
+			# check there is existing copy
+			/*
+			$query = "SELECT copy FROM tbl_books WHERE tbl_books.class = (SELECT id FROM tbl_classes WHERE tbl_classes.class LIKE '$class') ";
+			$res = $this->con->query($query) or die($this->con->error);
+			while($row = $res->fetch_assoc()){
+				if($row['copy'] == $copy){
+					$errorFlag = 'true';
+					$response .= '<li class = "list-group-item"><span class = "text-danger"><span class = "glyphicon glyphicon-remove-sign"></span> <strong>COPY # $copy</strong> for this book already exist.</span></li>';
+					break;
+				}
+			}
+			*/
+
 			# remarks
 			$query = "SELECT id FROM tbl_remarks WHERE remarks LIKE '$remarks'";
 			$res = $this->con->query($query);
@@ -150,7 +173,8 @@
 
 				$query = "UPDATE tbl_books SET book_number = $bookNumber, isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
 				short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
-				edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', availability = '$qty', remarks = '$remarksId' 
+				edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', 
+				availability = '$qty', remarks = '$remarksId', copy = '$copy', tracing = '$tracing', special_features = '$sf'  
 				WHERE id = $bookId";
 
 				# UPDATE ALL DATA ENTRY TO DATABASE

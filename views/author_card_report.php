@@ -1,4 +1,5 @@
 <div class = "container">
+	<button class = "btn btn-info pull-right" onclick = "location.href = 'admin.php'"><span class = "glyphicon glyphicon-arrow-left"></span> Back</button>
 	<h3>Generate Author Card</h3>
 	<hr>
 	<form class = "form" action = "author_card_report.php" method = "post">
@@ -16,8 +17,9 @@
 	<tr>
 		<th>Title</th>
 		<th>Author</th>	
-		<th>Book Number</th>		
-		<th>Available</th>
+		<th>Access Number</th>		
+		<th>Class</th>		
+		<th>Copy #</th>
 		<th>Edition</th>
 		<th>Publisher</th>
 		<th>Year</th>	
@@ -29,7 +31,8 @@
 				echo'<tr><td>'.'<a href = "index.php?bookId='.$row['id'].'">'. $row['title'].'</a></td>';
 				echo'<td>'. $row['author'].'</td>';
 				echo'<td>'. $row['book_number'].'</td>';
-				echo'<td>'. $row['qty'].'</td>';
+				echo'<td>'. $row['class'].'</td>';
+				echo'<td>'. $row['copy'].'</td>';
 				echo'<td>'. $row['edition'].'</td>';
 				echo'<td>'. $row['publisher'].'</td>';
 				echo'<td>'. $row['book_year'].'</td>';
@@ -120,7 +123,7 @@
 	#title{
 		text-indent: 60px;
 	}
-	#pages, #isbn, #tracing{
+	#pages, #isbn, #sf, #tracing{
 		margin-left: 60px;
 	}
 </style>

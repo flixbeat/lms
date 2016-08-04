@@ -5,6 +5,10 @@
 		public $model;
 
 		public function invoke(){
+			session_start();
+			# redirect if no user session
+			if(!isset($_SESSION['user'])) $this->redirect('admin_login');
+			
 			$data = array('title'=>'Edit Book');
 
 			$this->loadModel('ModelAdminEditBook');
@@ -39,6 +43,9 @@
 					$data['class'] = $this->model->book->getClassText();
 					$data['qty'] = $this->model->book->qty;
 					$data['remarks'] = $this->model->book->getRemarksText();
+					$data['copy'] = $this->model->book->copy;
+					$data['tracing'] = $this->model->book->tracing;
+					$data['sf'] = $this->model->book->sf;
 
 					$data['remarksOptions'] = $this->model->getRemarks(); # drop down choices
 
@@ -68,14 +75,18 @@
 				$cost = $_POST['cost'];
 				$source = $_POST['source'];
 				$class = $_POST['class'];
-				$qty = $_POST['qty'];
+				$qty = 1;
+				# $qty = $_POST['qty'];
 				$remarks = $_POST['remarks'];
+				$copy = $_POST['copy'];
+				$tracing = $_POST['tracing'];
+				$sf = $_POST['special_features'];
 
 				# insert data to database and get response message
 				$response = $this->model->editBook(
 					$bookNumber,$isbn,$title,$author,$publisher,
 					$description,$pages,$year,$dateReceived,
-					$edition,$cost,$source,$class,$qty,$remarks
+					$edition,$cost,$source,$class,$qty,$remarks,$copy,$tracing,$sf
 				);
 
 				$data['response'] = $response;

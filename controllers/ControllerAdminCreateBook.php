@@ -5,6 +5,10 @@
 		public $model;
 
 		public function invoke(){
+			session_start();
+			# redirect if no user session
+			if(!isset($_SESSION['user'])) $this->redirect('admin_login');
+			
 			$data = array('title'=>'Create New Book Entry');
 			$this->loadModel('ModelAdminCreateBook');
 			$this->model = new ModelAdminCreateBook();
@@ -34,6 +38,8 @@
 				$title = $_POST['title'];
 				$author = $_POST['author'];
 				$publisher = $_POST['publisher'];
+				$class = $_POST['class'];
+				$copies = $_POST['copies'];
 				# core info
 				$description = $_POST['description'];
 				$pages = $_POST['pages'];
@@ -46,15 +52,18 @@
 				$edition = $_POST['edition'];
 				$cost = $_POST['cost'];
 				$source = $_POST['source'];
-				$class = $_POST['class'];
-				$qty = $_POST['qty'];
+				#$qty = $_POST['qty'];
+				$qty = 1;
+				$sf = $_POST['special_features'];
+				$tracing = $_POST['tracing'];
+				
 				$remarks = $_POST['remarks'];
 
 				# insert data to database and get response message
 				$response = $this->model->createBook(
 					$bookNumber,$isbn,$title,$author,$publisher,
 					$description,$pages,$year,$dateReceived,
-					$edition,$cost,$source,$class,$qty,$remarks
+					$edition,$cost,$source,$class,$qty,$remarks,$copies,$tracing,$sf
 				);
 
 				$data['response'] = $response;

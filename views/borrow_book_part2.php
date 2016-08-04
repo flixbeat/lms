@@ -12,6 +12,7 @@
 					<form action = "borrow_part2.php" method = "get">
 						<div class = "form-group">
 							<p><?php echo "Today's Date " . date("Y/m/d")?></p>
+							<?php $dueDate = date("Y-m-d", time() + 172800)?>
 							<label>Student Number</label>
 							<input type="text" class="form-control"	id = "tfStNum" name="tfStNum" required><br>
 							<label>Due Date</label>

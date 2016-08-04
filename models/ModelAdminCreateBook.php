@@ -111,7 +111,8 @@
 		public function createBook(
 			$bookNumber,$isbn,$title,$author,$publisher,
 			$desc,$pages,$year,$dateReceived,
-			$edition,$cost,$source,$class,$qty,$remarks)
+			$edition,$cost,$source,$class,$qty,$remarks,$copies,
+			$tracing,$sf)
 		{
 			$bookNumber = $this->sanitize($bookNumber);
 			$isbn = $this->sanitize($isbn);
@@ -130,6 +131,10 @@
 			$class = $this->sanitize($class);
 			$qty = $this->sanitize($qty);
 			$remarks = $this->sanitize($remarks);
+			$copies = $this->sanitize($copies);
+
+			$tracing = $this->sanitize($tracing);
+			$sf = $this->sanitize($sf);
 
 			# checking empty fields and and setting defaults
 
@@ -148,7 +153,7 @@
 			$query = "SELECT id FROM tbl_books WHERE book_number = $bookNumber";
 			$res = $this->con->query($query);
 			if($res->num_rows > 0) {
-				$response .= '<li class = "list-group-item"><span class = "text-danger"><span class = "glyphicon glyphicon-remove-sign"></span> <strong>BOOK NUMBER</strong> already exist.</span></li>';
+				$response .= '<li class = "list-group-item"><span class = "text-danger"><span class = "glyphicon glyphicon-remove-sign"></span> <strong>ACCESS NUMBER</strong> already exist.</span></li>';
 				$errorFlag = true;
 			}
 
@@ -221,6 +226,12 @@
 				$response .= '<li class = "list-group-item"><span class = "text-success"><span class = "glyphicon glyphicon-info-sign"></span> A new <strong>CLASS</strong> has been created.</span></li>';
 			}
 
+			# number of copies
+			if($copies < 1){
+				$response .= '<li class = "list-group-item"><span class = "text-danger"><span class = "glyphicon glyphicon-remove-sign"></span> Number of <strong>COPIES</strong> should be atleast 1.</span></li>';
+				$errorFlag = true;
+			}
+
 			# remarks
 			$query = "SELECT id FROM tbl_remarks WHERE remarks LIKE '$remarks'";
 			$res = $this->con->query($query);
@@ -229,12 +240,28 @@
 
 			# if there are no input errors detected, then the data will be inserted to book table
 			if(!$errorFlag){
-				$query = "INSERT INTO tbl_books SET book_number = $bookNumber, isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
-				short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
-				edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', availability = '$qty', remarks = '$remarksId'";
+				
+				# select alike class
+				$q = "SELECT count(id) as old_copies FROM tbl_books WHERE class LIKE '$classId'";
+				$res = $this->con->query($q);
+				# check if there are existing copies
+				$oldCopies = 0;
+				if($res->num_rows > 0){
+					$row = $res->fetch_assoc();
+					$oldCopies = $row['old_copies'];
+				}
+				
+				for($i=1;$i<=$copies;$i+=1){
 
-				# INSERT ALL DATA ENTRY TO DATABASE
-				$this->con->query($query) or die($this->con->error);
+					$query = "INSERT INTO tbl_books SET book_number = $bookNumber+($i-1), isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
+					short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
+					edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', 
+					qty = '$qty', copy = $oldCopies + $i, remarks = '$remarksId', tracing = '$tracing', special_features = '$sf', status = 'A', availability = '1' ";	
+					
+					# INSERT ALL DATA ENTRY TO DATABASE
+					$this->con->query($query) or die($this->con->error);
+				}
+			
 				$response .= '<li class = "list-group-item list-group-item-success"><strong><span class = "glyphicon glyphicon-ok-sign"></span> A NEW LIBRARY ASSET HAS BEEN CREATED!</strong></li>';
 			}
 			else{

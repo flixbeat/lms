@@ -22,7 +22,7 @@
 					</form>
 				</div>
 				<div class = "panel-footer clearfix">
-					<button class = "btn btn-default">Back to student search</button>
+					<button class = "btn btn-default" onclick = "location.href = 'index.php'"><span class = "glyphicon glyphicon-home"></span> Back to Home</button>
 					<button name = "btnLogin" class = "btn btn-warning pull-right"><span class = "glyphicon glyphicon-log-in"></span> Login</button>
 				</div>
 			</div>

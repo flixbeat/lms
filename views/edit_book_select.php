@@ -6,7 +6,7 @@
 			</div>
 			<div class = "panel-body">
 				<div class = "form-group">
-					<label>Book Number</label>
+					<label>Access Number</label>
 					<input type = "number" name = "bookNumber" class = "form-control" required>
 				</div>
 				<div class = "form-group">

@@ -12,8 +12,18 @@
 
 			$data = array('title'=>'Dashboard');
 
+			$this->loadModel('ModelHome');
+			$this->model = new ModelHome();
+
+			$data['sy'] = $this->model->getCurrentSchoolYear();
+
 			$this->loadModel('ModelAdmin');
 			$this->model = new ModelAdmin();
+			
+			# adjust school year
+			if($this->model->setNewSchoolYear()){ # if new school
+				echo '<script>alert("A new school year has been set.")</script>';
+			}
 
 			$maxGrade = 6;
 			$grades = array();

@@ -24,6 +24,22 @@
 			require_once 'controllers/ControllerStudentTracker.php';
 			$controller = new ControllerStudentTracker();
 		}
+		else if($_GET['action']=='addStudent'){
+			require_once 'controllers/ControllerAddStudent.php';
+			$controller = new ControllerAddStudent();
+		}
+		else if($_GET['action']=='editStudent'){
+			require_once 'controllers/ControllerEditStudent.php';
+			$controller = new ControllerEditStudent();
+		}
+		else if($_GET['action']=='searchStudent'){
+			require_once 'controllers/ControllerSearchStudent.php';
+			$controller = new ControllerSearchStudent();
+		}
+		else if($_GET['action']=='addRule'){
+			require_once 'controllers/ControllerAddRule.php';
+			$controller = new ControllerAddRule();
+		}
 	}
 	# THIS CONDITION WILL ONLY BE EXECUTED BY AJAX CALL
 	else if(isset($_POST['ajax'])){
