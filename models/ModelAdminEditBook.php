@@ -179,7 +179,7 @@
 				$res = $this->con->query($q);
 				while($row = $res->fetch_assoc()){
 					$bookId = $row['id'];
-					$query = "UPDATE tbl_books SET book_number = $bookNumber, isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
+					$query = "UPDATE tbl_books SET isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
 					short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
 					edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', 
 					availability = '$qty', remarks = '$remarksId', copy = '$copy', tracing = '$tracing', special_features = '$sf'  

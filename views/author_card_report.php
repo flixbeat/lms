@@ -25,13 +25,11 @@
 		<th>Year</th>	
 		<th>Action</th>	
 	</tr>
-	<?php 
-									
-								?>
+
 	<?php
 		if(isset($data['books'])){
 			while($row = $data['books']->fetch_assoc()){
-				echo'<tr><td>'.'<a href = "index.php?bookId='.$row['id'].'">'. $row['title'].'</a></td>';
+				echo'<tr><td><strong class = "text-info">'. $row['title']. '</strong></td>';
 				if( substr_count($row['author'], '~' ) > 2){
 					$authorR = explode('~', $row['author']);
 					echo '<td>'.$authorR[0] . ", " . $authorR[1] . ", et. al.".'</td>';
@@ -46,7 +44,7 @@
 				echo'<td>'. $row['publisher'].'</td>';
 				echo'<td>'. $row['book_year'].'</td>';
 				echo'<td><button 
-					class = "btn btn-sm btn-default" 
+					class = "btn btn-sm btn-success" 
 					value = "'. $row['id'].'" 
 					onclick = "printAuthorCard('.$row['id'].')"
 					data-toggle = "modal" data-target = "#print-prev-modal"
