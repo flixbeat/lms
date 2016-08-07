@@ -151,6 +151,7 @@
 
         return true;
 	}
+	
 </script>
 <style type="text/css">
 	#searchResult{

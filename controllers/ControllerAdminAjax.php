@@ -44,6 +44,12 @@
 				$this->model = new ModelActivateBook();
 				$this->model->setActive($status,$bookId);
 			}
+			else if($action == "saveStudSection"){
+				$records = $_POST['records'];
+				$this->loadModel('ModelStudentManage');
+				$this->model = new ModelStudentManage();
+				$this->model->saveStudGradeAndSec($records);
+			}
 			# floyd's
 			else if($action == 'checkBook'){
 				$title1 = "Borrow Book";
