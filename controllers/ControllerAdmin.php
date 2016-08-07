@@ -6,7 +6,6 @@
 
 		public function invoke(){
 			session_start();
-			
 			# redirect if no user session
 			if(!isset($_SESSION['user'])) $this->redirect('admin_login');
 
@@ -19,7 +18,7 @@
 
 			$this->loadModel('ModelAdmin');
 			$this->model = new ModelAdmin();
-			
+
 			# adjust school year
 			if($this->model->setNewSchoolYear()){ # if new school
 				echo '<script>alert("A new school year has been set.")</script>';

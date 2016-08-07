@@ -96,7 +96,18 @@
 							<td><?=$row['class']?></td>
 							<td><?=$row['title']?></td>
 							<td><?=$row['isbn']?></td>
-							<td><?=$row['author']?></td>
+							<td>
+								<?php 
+									if( substr_count($row['author'], '~' ) > 2){
+										$authorR = explode('~', $row['author']);
+										echo $authorR[0] . ", " . $authorR[1] . ", et. al.";
+									}
+									else{
+										$authorR = explode('~', $row['author']);
+										echo $authorR[0]; 
+									}
+								?>
+							</td>
 							<td><?=$row['publisher']?></td>
 							<td><?=$row['edition']?></td>
 							<td><?=$row['book_year']?></td>

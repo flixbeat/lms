@@ -4,7 +4,7 @@
 		$('#addUsertype').change(function(){
 			var x = $(this).val();
 			$('#addUserTypeId').val(x);
-			alert($('#addUserTypeId').val());
+			// alert($('#addUserTypeId').val());
 		});
 
 		$('#editUname').change(function(){

@@ -10,7 +10,10 @@
 					<strong>Adjust All Student Grade Levels</strong>
 				</div>
 				<div class = "panel-body text-center">
-					<button class = "btn btn-primary">All student grade level + 1</button><hr>
+					<form action = "student_manage.php" method = "post" id = "frmAdjustGradeLevels">
+						<button class = "btn btn-primary" name = "btnAdjustGradeLevels">All student grade level + 1</button>
+					</form>
+					<hr>
 					<p class = "text-justify"><small>The button above will adjust all students grade level by adding 1 to their current grade level. 
 					This will be useful when a new school year arrives since their grade level will change.
 					However, student who didn't passed the the year must be edited manually.
@@ -22,3 +25,13 @@
 		</div>
 	</div>
 </div>
+<script>
+	/*
+	$('button[name="btnAdjustGradeLevels"]').click(function(){
+		var conf = confirm("Are you sure you wanted to add 1 to all grade levels? this cannot be undone.");
+		if(conf){
+			$('#frmAdjustGradeLevels').submit();
+		}	
+	});
+	*/
+</script>

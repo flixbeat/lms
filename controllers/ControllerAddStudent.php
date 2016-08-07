@@ -5,10 +5,6 @@
 
 
 		public function invoke(){
-			session_start();
-			# redirect if no user session
-			if(!isset($_SESSION['user'])) $this->redirect('admin_login');
-			
 			$title1 = "Student Management";
 			
 			$this->loadModel('ModelAddStudent');
@@ -20,13 +16,15 @@
 			$data['alertM'] = null;
 			if(isset($_GET['btnAdd'])){
 				$sNum = $_GET['tfStudNum'];
-				$sName = $_GET['tfStudName'];
+				$LName = $_GET['tfStudLName'];
+				$FName = $_GET['tfStudFName'];
+				$MName = $_GET['tfStudMName'];
 				$grdLvl = $_GET['selGrdLvl'];
 				$section = $_GET['selSec'];
 				
 				$model->selStudent($sNum);
 				if($model->stExist ==0){
-					$model->addStudent($sNum,$sName,$grdLvl,$section);
+					$model->addStudent($sNum,$grdLvl,$section,$LName,$FName,$MName);
 					
 					$data['alertM'] = "<div class='alert alert-success'>
 							<a href='#' class='close' data-dismiss='alert' aria-label='close'>close</a>

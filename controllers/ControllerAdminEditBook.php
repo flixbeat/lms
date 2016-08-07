@@ -29,7 +29,19 @@
 					$data['bookNumber'] = $this->model->book->bookNumber;
 					$data['bookTitle'] = $this->model->book->title;
 					$data['isbn'] = $this->model->book->isbn;
+					
+					# get author(s)
 					$data['author'] = $this->model->book->getAuthorText();
+					$data['authorR'] = array($data['author']);
+
+					if($this->model->containsChar('~',$data['author']) ){
+						$authorR = explode('~',$data['author']);
+						$data['authorR'] = array(); # clear array frst
+						for($i=0;$i<count($authorR);$i+=1){
+							array_push($data['authorR'], $authorR[$i]);
+						}
+					}
+
 					$data['publisher'] = $this->model->book->getPublisherText();
 					$data['shortText'] = $this->model->book->shortText;
 					$data['pages'] = $this->model->book->pages;
@@ -60,7 +72,19 @@
 				$bookNumber = $_POST['bookNumber'];
 				$isbn = $_POST['isbn'];
 				$title = $_POST['title'];
+
+				# multiauthors =========================
 				$author = $_POST['author'];
+
+				if($_POST['author2'] != '') $author .= '~' . $_POST['author2'];
+				if($_POST['author3'] != '') $author .= '~' . $_POST['author3'];
+				if($_POST['author4'] != '') $author .= '~' . $_POST['author4'];
+				if($_POST['author5'] != '') $author .= '~' . $_POST['author5'];
+				if($_POST['author6'] != '') $author .= '~' . $_POST['author6'];
+				if($_POST['author7'] != '') $author .= '~' . $_POST['author7'];
+
+				# multiauthors end =====================
+
 				$publisher = $_POST['publisher'];
 				# core info
 				$description = $_POST['description'];

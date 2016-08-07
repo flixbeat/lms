@@ -29,7 +29,7 @@
 			$this->bookNumber = $row['book_number'];
 			$this->isbn = $row['isbn'];
 			$this->title = $row['title'];
-			$this->authorId = $row['publisher'];
+			$this->authorId = $row['author'];
 			$this->publisherId = $row['publisher'];
 			$this->shortText = $row['short_text'];
 			$this->pages = $row['pages'];

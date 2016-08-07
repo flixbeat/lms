@@ -55,7 +55,13 @@
 			$html = "";
 			$html .= '<div id = "class">'.$row['class']."-C".$row['copy']	.'</div>';
 			$html .= '<div id = "author-card-body">';
-			$html .= '<div id = "author">'.$row['author'].'</div>';
+			if( substr_count($row['author'], '~' ) > 2){
+				$authorR  = explode('~', $row['author']);
+				$html .= '<div id = "author">'. $authorR[0] . ", " . $authorR[1] . ", et. al." . '</div>';
+			}
+			else{
+				$html .= '<div id = "author">'. $row['author'] . '</div>';	 
+			}
 			$html .= '<div id = "title">'.$row['title'].' -- '.$row['publisher'].', c'.$row['book_year'].'</div>';
 			$html .= '<div id = "pages">'.$row['pages'].' p</div>';
 			$html .= '<div id = "sf">'.$row['special_features'].'</div>';

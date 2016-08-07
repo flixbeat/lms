@@ -28,8 +28,12 @@
 					<button id = 'btnChk' class="btn btn-warning">Check Student #</button></p>
 				<form action="student_add.php" method="get">
 					<input type="hidden" class="form-control" id ="sNum_v2" name="tfStudNum">
-					<label>Student Name</label>
-					<input type="text" class="form-control" id = "tfStudName" name="tfStudName" required disabled><br>
+					<label>Last Name</label>
+					<input type="text" class="form-control" id = "tfStudLName" name="tfStudLName" required disabled><br>
+					<label>First Name</label>
+					<input type="text" class="form-control" id = "tfStudFName" name="tfStudFName" required disabled><br>
+					<label>Middle Name</label>
+					<input type="text" class="form-control" id = "tfStudMName" name="tfStudMName" required disabled><br>
 					<label>Grade Level</label>
 					<select class = "form-control" id = "selGrdLvl" name = "selGrdLvl" disabled>
 					
@@ -94,7 +98,9 @@
 						var checker = $("#hidChk").val();
 						if(checker == 1){
 							$('#alertExist').fadeIn();
-							$('#tfStudName').prop('disabled',true);
+							$('#tfStudLName').prop('disabled',true);
+							$('#tfStudFName').prop('disabled',true);
+							$('#tfStudMName').prop('disabled',true);
 							$('#selGrdLvl').prop('disabled',true);
 							$('#selSec').prop('disabled',true);
 							$('#btnAdd').prop('disabled',true);
@@ -103,7 +109,9 @@
 						}
 						else if(checker == 0){
 							$('#alertNotEx').fadeIn();
-							$('#tfStudName').prop('disabled',false);
+							$('#tfStudLName').prop('disabled',false);
+							$('#tfStudFName').prop('disabled',false);
+							$('#tfStudMName').prop('disabled',false);
 							$('#selGrdLvl').prop('disabled',false);
 							$('#selSec').prop('disabled',false);
 							$('#btnAdd').prop('disabled',false);

@@ -202,6 +202,12 @@
 						<button class = "btn btn-default btn-block"
 							onclick = "location.href='rule_add.php?action=addRules'"
 							>Add Rules</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='rule_edit.php?action=editRules'"
+							>Edit Rule</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='rule_delete.php?action=delRules'"
+							>Delete Rule</button>
 					</div>
 				</div>
 			</div>

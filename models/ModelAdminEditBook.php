@@ -171,14 +171,26 @@
 				$row = $res->fetch_assoc();
 				$bookId = $row['id'];
 
-				$query = "UPDATE tbl_books SET book_number = $bookNumber, isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
-				short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
-				edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', 
-				availability = '$qty', remarks = '$remarksId', copy = '$copy', tracing = '$tracing', special_features = '$sf'  
-				WHERE id = $bookId";
+				# get all book id of the same class
+				$q = "SELECT bks.id FROM tbl_books bks 
+				INNER JOIN tbl_classes cls ON cls.id = bks.class
+				WHERE cls.class LIKE '$class'";
+
+				$res = $this->con->query($q);
+				while($row = $res->fetch_assoc()){
+					$bookId = $row['id'];
+					$query = "UPDATE tbl_books SET book_number = $bookNumber, isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
+					short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
+					edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', 
+					availability = '$qty', remarks = '$remarksId', copy = '$copy', tracing = '$tracing', special_features = '$sf'  
+					WHERE id = $bookId";
+					$this->con->query($query) or die($this->con->error);
+				}
+				
+				
 
 				# UPDATE ALL DATA ENTRY TO DATABASE
-				$this->con->query($query) or die($this->con->error);
+				
 				$response .= '<li class = "list-group-item list-group-item-success"><strong><span class = "glyphicon glyphicon-ok-sign"></span> BOOK RECORD HAS BEEN MODIFIED!</strong></li>';
 			}
 			else{

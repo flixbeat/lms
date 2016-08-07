@@ -40,6 +40,14 @@
 			require_once 'controllers/ControllerAddRule.php';
 			$controller = new ControllerAddRule();
 		}
+		else if($_GET['action']=='editRule'){
+			require_once 'controllers/ControllerEditRule.php';
+			$controller = new ControllerEditRule();
+		}
+		else if($_GET['action']=='delRule'){
+			require_once 'controllers/ControllerDeleteRule.php';
+			$controller = new ControllerDeleteRule();
+		}
 	}
 	# THIS CONDITION WILL ONLY BE EXECUTED BY AJAX CALL
 	else if(isset($_POST['ajax'])){

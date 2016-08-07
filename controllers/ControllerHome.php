@@ -10,9 +10,7 @@
 
 		public function invoke(){
 			session_start();
-			# redirect if no user session
-			if(!isset($_SESSION['user'])) $this->redirect('admin_login');
-
+			
 			$pageTitle = 'LMS - SLSC';
 			$resultSet = null;
 

@@ -50,7 +50,15 @@
 				var arr = data.split("|");
 				$('#title').val(arr[0]);
 				$('#isbn').val(arr[1]);
-				$('#author').val(arr[2]);
+				
+				if( (arr[2].match(/~/g) || []).length >  2 ){
+					var authorR = arr[2].split('~');
+					$('#author').val(authorR[0] + ", " + authorR[1]  + ", et. al.");	
+				}
+				else{
+					$('#author').val(arr[2]);	
+				}
+
 				$('#edition').val(arr[3]);
 				$('#bookId').val(arr[4]);
 		});

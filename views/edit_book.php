@@ -18,13 +18,15 @@
 								<div class = "col-sm-8">
 									<div class = "form-group">
 										<label>Class</label>
-										<input type = "text" class = "form-control" name = "class" value = "<?php echo $data['class'];?>" required/>
+										<input type = "text" class = "form-control" value = "<?php echo $data['class'];?>" disabled/>
+										<input type = "hidden" name = "class" value = "<?php echo $data['class'];?>">
 									</div>
 								</div>
 								<div class = "col-sm-4">
 									<div class = "form-group">
 										<label>Copy (C)</label>
-										<input type = "text" class = "form-control" name = "copy" value = "<?php echo $data['copy'];?>" required/>
+										<input type = "text" class = "form-control" value = "<?php echo $data['copy'];?>" disabled/>
+										<input type = "hidden" name = "copy" value = "<?php echo $data['copy'];?>">
 									</div>
 								</div>
 							</div>
@@ -38,8 +40,31 @@
 								<input type = "text" class = "form-control" name = "title" value = "<?php echo $data['bookTitle'];?>" required/>
 							</div>
 							<div class = "form-group">
-								<label>Author</label>
-								<input type = "text" class = "form-control" name = "author" value = "<?php echo $data['author'];?>" required/>
+								<label>Author 1</label>
+								<input type = "text" class = "form-control" name = "author" 
+									value = "<?= isset($data['authorR'][0])? $data['authorR'][0]:null ?>" 
+									required/>
+								<input type = "hidden" name = "author2"
+									value = "<?= isset($data['authorR'][1])? $data['authorR'][1]:null ?>" 
+								/>
+								<input type = "hidden" name = "author3"
+									value = "<?= isset($data['authorR'][2])? $data['authorR'][2]:null ?>" 
+								/>
+								<input type = "hidden" name = "author4"
+									value = "<?= isset($data['authorR'][3])? $data['authorR'][3]:null ?>" 
+								/>
+								<input type = "hidden" name = "author5"
+									value = "<?= isset($data['authorR'][4])? $data['authorR'][4]:null ?>" 
+								/>
+								<input type = "hidden" name = "author6"
+									value = "<?= isset($data['authorR'][5])? $data['authorR'][5]:null ?>" 
+								/>
+								<input type = "hidden" name = "author7"
+									value = "<?= isset($data['authorR'][6])? $data['authorR'][6]:null ?>" 
+								/>
+							</div>
+							<div class = "form-group">
+								<button  type = "button" class = "btn btn-info" id = "btnAddAuthors" data-toggle = "modal" data-target = "#add-author-modal">Add more authors</button>
 							</div>
 							<div class = "form-group">
 								<label>Publisher</label>
@@ -151,6 +176,64 @@
 		</div>
 	</form>
 </div>
+<div class = "modal fade" id = "add-author-modal" tabindex = "-1" role = "dialog" aria-labelledby = "add-author" aria-hidden = "true">
+	<div class = "modal-dialog modal-md">
+		<div class = "modal-content">
+			<div class = "modal-header">
+				<button type = "button" class = "close" data-dismiss = "modal" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class = "modal-title" id = "manage-book">Add more authors</h4>
+			</div>
+			<div class = "modal-body">
+				<div class = "form-group">
+					<label>Author 2</label>
+					<input type = "text" class = "form-control" id = "author2"
+						value = "<?= isset($data['authorR'][1])? $data['authorR'][1]:null ?>" 
+					/>
+				</div>
+				<div class = "form-group">
+					<label>Author 3</label>
+					<input type = "text" class = "form-control" id = "author3"
+						value = "<?= isset($data['authorR'][2])? $data['authorR'][2]:null ?>" 
+					/>
+
+				</div>
+				<div class = "form-group">
+					<label>Author 4</label>
+					<input type = "text" class = "form-control" id = "author4"
+						value = "<?= isset($data['authorR'][3])? $data['authorR'][3]:null ?>" 
+					/>
+
+				</div>
+				<div class = "form-group">
+					<label>Author 5</label>
+					<input type = "text" class = "form-control" id = "author5"
+						value = "<?= isset($data['authorR'][4])? $data['authorR'][4]:null ?>" 
+					/>
+
+				</div>
+				<div class = "form-group">
+					<label>Author 6</label>
+					<input type = "text" class = "form-control" id = "author6"
+						value = "<?= isset($data['authorR'][5])? $data['authorR'][5]:null ?>" 
+					/>
+
+				</div>
+				<div class = "form-group">
+					<label>Author 7</label>
+					<input type = "text" class = "form-control" id = "author7"
+						value = "<?= isset($data['authorR'][6])? $data['authorR'][6]:null ?>" 
+					/>
+
+				</div>
+			</div>
+			<div class = "modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
 	$(document).ready(function(){
 		$('#cbMonth').val("<?php echo $data['drMonth'];?>");
@@ -179,5 +262,30 @@
 			$('input[name="remarks"]').val($(this).val());
 		});
 
+		// ====================================================================================
+
+		$('#author2').keyup(function(){
+			$('input[name="author2"]').val($(this).val());
+		});
+
+		$('#author3').keyup(function(){
+			$('input[name="author3"]').val($(this).val());
+		});
+
+		$('#author4').keyup(function(){
+			$('input[name="author4"]').val($(this).val());
+		});
+
+		$('#author5').keyup(function(){
+			$('input[name="author5"]').val($(this).val());
+		});
+
+		$('#author6').keyup(function(){
+			$('input[name="author6"]').val($(this).val());
+		});
+
+		$('#author7').keyup(function(){
+			$('input[name="author7"]').val($(this).val());
+		});
 	});
 </script>

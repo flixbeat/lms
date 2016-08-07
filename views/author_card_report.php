@@ -25,11 +25,20 @@
 		<th>Year</th>	
 		<th>Action</th>	
 	</tr>
+	<?php 
+									
+								?>
 	<?php
 		if(isset($data['books'])){
 			while($row = $data['books']->fetch_assoc()){
 				echo'<tr><td>'.'<a href = "index.php?bookId='.$row['id'].'">'. $row['title'].'</a></td>';
-				echo'<td>'. $row['author'].'</td>';
+				if( substr_count($row['author'], '~' ) > 2){
+					$authorR = explode('~', $row['author']);
+					echo '<td>'.$authorR[0] . ", " . $authorR[1] . ", et. al.".'</td>';
+				}
+				else{
+					echo '<td>'.$row['author'].'</td>'; 
+				}
 				echo'<td>'. $row['book_number'].'</td>';
 				echo'<td>'. $row['class'].'</td>';
 				echo'<td>'. $row['copy'].'</td>';

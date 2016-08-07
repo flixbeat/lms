@@ -77,54 +77,5 @@
 			return $this->con->query($q);
 		}
 
-		function getClassDatalist(){
-			$q = "SELECT class FROM tbl_classes ORDER BY class";
-			$res = $this->con->query($q);
-			$options = '';
-			while($row = $res->fetch_assoc()){
-				$options .= '<option value = "'.$row['class'].'">';
-			}
-			return $options;
-		}
-
-		function getAuthorDatalist(){
-			$q = "SELECT author FROM tbl_authors ORDER BY author";
-			$res = $this->con->query($q);
-			$options = '';
-			while($row = $res->fetch_assoc()){
-				$options .= '<option value = "'.$row['author'].'">';
-			}
-			return $options;
-		}
-
-		function getPublisherDatalist(){
-			$q = "SELECT publisher FROM tbl_publishers ORDER BY publisher";
-			$res = $this->con->query($q);
-			$options = '';
-			while($row = $res->fetch_assoc()){
-				$options .= '<option value = "'.$row['publisher'].'">';
-			}
-			return $options;
-		}
-
-		function getSourceOfFundDatalist(){
-			$q = "SELECT source_of_fund FROM tbl_source_of_funds ORDER BY source_of_fund";
-			$res = $this->con->query($q);
-			$options = '';
-			while($row = $res->fetch_assoc()){
-				$options .= '<option value = "'.$row['source_of_fund'].'">';
-			}
-			return $options;
-		}
-
-		function getRemarksDatalist(){
-			$q = "SELECT remarks FROM tbl_remarks ORDER BY remarks";
-			$res = $this->con->query($q);
-			$options = '';
-			while($row = $res->fetch_assoc()){
-				$options .= '<option value = "'.$row['remarks'].'">';
-			}
-			return $options;
-		}
 	}
 ?>

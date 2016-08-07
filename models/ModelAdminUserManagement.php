@@ -25,7 +25,7 @@
 		//dropdown for add usertypes
 		public function selectUserType(){
 			$query = "SELECT id,user_type FROM tbl_usertypes";
-			$result = $this->con->query($query);		
+			$result = $this->con->query($query);
 			return $result;
 		}
 		//dropdown for edit username
@@ -48,19 +48,28 @@
 		}
 		//add user
 		public function addUser($uname, $pwd,$userTypeId,$name, $pos){
-			$query = "INSERT INTO tbl_users SET uname = '$uname', pword = md5('$pwd') ,created = curDate(), user_type_id = '$userTypeId', name = '$name', position = '$pos' ";
-			$this->con->query($query);	
-			
+			$q = "SELECT id FROM tbl_users WHERE uname LIKE '$uname'";
+			$res = $this->con->query($q);
+			if($res->num_rows == 0){
+				$query = "INSERT INTO tbl_users SET uname = '$uname', pword = md5('$pwd') ,created = curDate(), user_type_id = '$userTypeId', name = '$name', position = '$pos' ";
+				$this->con->query($query);		
+				echo "<script>A new user has been created.</script>";
+			}
+			else{
+				echo "<script>Username already exist.</script>";
+			}			
 		}
 		
 		public function editUser($id,$pwd,$userTypeId,$name,$pos){
 			$query = "UPDATE tbl_users SET pword = md5('$pwd'), modified = curDate(), user_type_id = '$userTypeId', name = '$name', position = '$pos' WHERE id = '$id'  ";
 			$this->con->query($query);
+			echo "<script>User has been edited.</script>";
 		}
 
 		public function deleteUser($id){
 			$query = "DELETE FROM tbl_users WHERE id = '$id'";
 			$this->con->query($query);
+			echo "<script>User has been deleted.</script>";
 		}
 	}		
 ?>

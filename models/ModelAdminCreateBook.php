@@ -138,7 +138,6 @@
 
 			# checking empty fields and and setting defaults
 
-
 			# flag to determine if there are any entry flaws, if there is/are, 
 			# then this will be set to true -> prohibiting insertion of
 			# data into the table

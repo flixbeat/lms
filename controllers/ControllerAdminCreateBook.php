@@ -19,7 +19,8 @@
 				$data['bookNumbers'] = $this->model->getBookNumbers(); #array
 				$data['isbns'] = $this->model->getISBNs(); #array
 				$data['titles'] = $this->model->getTitles(); #array
-				$data['authors'] = $this->model->getAuthors(); #array
+				#$data['authors'] = $this->model->getAuthors(); #array
+				$data['authors'] = $this->model->getAuthorDatalist(); #string
 				$data['publishers'] = $this->model->getPublishers(); #array
 				$data['source'] = $this->model->getSourceOfFunds(); #array
 				$data['class'] = $this->model->getClasses(); #array
@@ -36,10 +37,23 @@
 				$bookNumber = $_POST['bookNumber'];
 				$isbn = $_POST['isbn'];
 				$title = $_POST['title'];
+
+				# multiauthors =========================
 				$author = $_POST['author'];
+
+				if($_POST['author2'] != '') $author .= '~' . $_POST['author2'];
+				if($_POST['author3'] != '') $author .= '~' . $_POST['author3'];
+				if($_POST['author4'] != '') $author .= '~' . $_POST['author4'];
+				if($_POST['author5'] != '') $author .= '~' . $_POST['author5'];
+				if($_POST['author6'] != '') $author .= '~' . $_POST['author6'];
+				if($_POST['author7'] != '') $author .= '~' . $_POST['author7'];
+
+				# multiauthors end =====================
+				
 				$publisher = $_POST['publisher'];
 				$class = $_POST['class'];
 				$copies = $_POST['copies'];
+
 				# core info
 				$description = $_POST['description'];
 				$pages = $_POST['pages'];

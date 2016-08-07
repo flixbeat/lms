@@ -53,17 +53,20 @@
 								</div>
 							</div>
 							<div class = "form-group">
-								<label>Author</label>
-								<input list = "author" class = "form-control" name = "author" required/>
-								<div id = "author_datalist">
-								<?php
-									echo '<datalist id = "author">';
-									foreach($data['authors'] as $val){
-										echo '<option value = "'.$val.'">';
-									}	
-									echo '</datalist>';
-								?>
-								</div>
+								<label>Author 1</label>
+								<input list = "author1_datalist" class = "form-control" name = "author" required/>
+								<datalist id = "author1_datalist">
+									<?=$data['authors']?>
+								</datalist>
+								<input type = "hidden" name = "author2"/ >
+								<input type = "hidden" name = "author3"/ >
+								<input type = "hidden" name = "author4"/ >
+								<input type = "hidden" name = "author5"/ >
+								<input type = "hidden" name = "author6"/ >
+								<input type = "hidden" name = "author7"/ >
+							</div>
+							<div class = "form-group">
+								<button  type = "button" class = "btn btn-info" id = "btnAddAuthors" data-toggle = "modal" data-target = "#add-author-modal">Add more authors</button>
 							</div>
 							<div class = "form-group">
 								<label>Publisher</label>
@@ -198,6 +201,67 @@
 		</div>
 	</form>
 </div>
+
+<div class = "modal fade" id = "add-author-modal" tabindex = "-1" role = "dialog" aria-labelledby = "add-author" aria-hidden = "true">
+	<div class = "modal-dialog modal-md">
+		<div class = "modal-content">
+			<div class = "modal-header">
+				<button type = "button" class = "close" data-dismiss = "modal" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class = "modal-title" id = "manage-book">Add more authors</h4>
+			</div>
+			<div class = "modal-body">
+				<div class = "form-group">
+					<label>Author 2</label>
+					<input list = "author2_datalist" class = "form-control" id = "author2"/>
+					<datalist id = "author2_datalist">
+						<?=$data['authors']?>
+					</datalist>
+				</div>
+				<div class = "form-group">
+					<label>Author 3</label>
+					<input list = "author3_datalist" class = "form-control" id = "author3"/>
+					<datalist id = "author3_datalist">
+						<?=$data['authors']?>
+					</datalist>
+				</div>
+				<div class = "form-group">
+					<label>Author 4</label>
+					<input list = "author4_datalist" class = "form-control" id = "author4"/>
+					<datalist id = "author4_datalist">
+						<?=$data['authors']?>
+					</datalist>
+				</div>
+				<div class = "form-group">
+					<label>Author 5</label>
+					<input list = "author5_datalist" class = "form-control" id = "author5"/>
+					<datalist id = "author5_datalist">
+						<?=$data['authors']?>
+					</datalist>
+				</div>
+				<div class = "form-group">
+					<label>Author 6</label>
+					<input list = "author6_datalist" class = "form-control" id = "author6"/>
+					<datalist id = "author6_datalist">
+						<?=$data['authors']?>
+					</datalist>
+				</div>
+				<div class = "form-group">
+					<label>Author 7</label>
+					<input list = "author7_datalist" class = "form-control" id = "author7"/>
+					<datalist id = "author7_datalist">
+						<?=$data['authors']?>
+					</datalist>
+				</div>
+			</div>
+			<div class = "modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 	$(document).ready(function(){
 		$('#cbMonth').val("<?php echo date('m')?>");
@@ -274,6 +338,7 @@
 			});
 		});
 
+		/*
 		$('input[list="author"]').keyup(function(){
 			$.post('admin.php',{
 				ajax:true,
@@ -285,6 +350,7 @@
 					$('#author_datalist').html(data);
 			});
 		});
+		*/
 
 		$('input[list="source"]').keyup(function(){
 			$.post('admin.php',{
@@ -309,6 +375,33 @@
 					$('#class_datalist').html(data);
 			});
 		});
+
+		// ====================================================================================
+
+		$('#author2').keyup(function(){
+			$('input[name="author2"]').val($(this).val());
+		});
+
+		$('#author3').keyup(function(){
+			$('input[name="author3"]').val($(this).val());
+		});
+
+		$('#author4').keyup(function(){
+			$('input[name="author4"]').val($(this).val());
+		});
+
+		$('#author5').keyup(function(){
+			$('input[name="author5"]').val($(this).val());
+		});
+
+		$('#author6').keyup(function(){
+			$('input[name="author6"]').val($(this).val());
+		});
+
+		$('#author7').keyup(function(){
+			$('input[name="author7"]').val($(this).val());
+		});
+
 
 	});
 </script>
