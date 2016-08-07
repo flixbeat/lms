@@ -8,6 +8,8 @@
 		public $sameBkChkr;
 		public $dueChk;
 		public $totalRec;
+		public $valRule;
+
 		public function __construct(){
 			parent::__construct();
 		}	
@@ -85,6 +87,16 @@
 				$this->sameBkChkr = "notSameBook";
 			}
 
+		}
+
+		public function selBorrowRule(){
+			$qry = "SELECT tbl_rules.value FROM tbl_rules WHERE rule LIKE 'max_borrow'";
+			$res = $this->con->query($qry);
+			if($res->num_rows == 1){
+				while($row = $res->fetch_assoc()){
+					$this->valRule = $row['value'];
+				}
+			}
 		}
 	}
 ?>

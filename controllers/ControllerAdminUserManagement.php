@@ -28,9 +28,15 @@
 				$pwd = $_POST['addPword'];
 				$userTypeId = $_POST['addUserType'];
 				$name = $_POST['addName'];
-				$pos = $_POST['addPos'];
+				#$pos = $_POST['addPos'];
 
-				$this->model->addUser($uname,$pwd,$userTypeId,$name,$pos);
+				$this->model->addUser($uname,$pwd,$userTypeId,$name);
+				if($this->model->userChk == 1){
+					echo "<script>alert('Sorry, User already exists')</script>";
+				}
+				else if($this->model->userChk == 0){
+					echo "<script>alert('User has been recorded')</script>";
+				}
 				
 			}
 

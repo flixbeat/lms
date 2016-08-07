@@ -38,10 +38,24 @@
 					echo "<script>alert('Book has been Returned')</script>";
 					#$this->loadView('book_return',null);
 					
+
 					if($dueCheck == 1){
 						echo "<script>alert('Book is overdue')</script>";
 						//$this->loadView('book_return',null);
 						$modelR->selStudent($sNum);
+						$modelR->selOverDueDays($modelR->id);
+						$modelR->selFineRule($bkNum);
+						$totDueDays = abs($modelR->totalDueDays);
+						$modelR->addDeliquent($sNum,$totDueDays);
+						$delqRule = $modelR->delqRule;
+						
+						$finePrice = $modelR->finePrice;
+						$totalFine = ($totDueDays*$finePrice);
+
+						if($delqRule >= $totDueDays){
+							$modelR->addDeliquent($sNum,$totDueDays);
+							echo "<script>alert('Student was added at the deliquent borrower records')</script>";
+						}
 						$data['idSnum'] = $sNum;
 						$data['sName'] = $modelR->sName;
 						$data['grd'] = 	$modelR->grdId;
@@ -49,6 +63,9 @@
 						$data['dDate'] = $dueDate;
 						$data['bId'] = $idBrw;
 						$data['sId'] = $modelR->sId;
+						$data['totFine'] = $totalFine;
+
+						
 						$this->loadView('overdue_view',$data);
 					}
 					else if($dueCheck == 0){

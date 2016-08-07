@@ -51,6 +51,7 @@
 				$this->model->compareDueDate($dDate);
 				$this->model->checkBorrowRecord($bkId,$sId);
 				$this->model->checkBorrowExist($bkId,$sId);
+				$this->model->selBorrowRule();
 
 				#property use for checker validations
 				$studentChecker = $this->model->chkStudent;
@@ -69,7 +70,7 @@
 						#echo "<script>alert('Due date is valid.')</script>";
 
 						//condition for total borrowing records
-						if($brwRec==1||$brwRec==0){
+						if($brwRec!=$this->model->valRule){
 							#echo "<script>alert('Student can still borrow a book.')</script>";
 
 							// condition for the borrowed book
@@ -86,7 +87,7 @@
 
 							}// end of condition for the borrowed book
 						}
-						if($brwRec==2){
+						if($brwRec==$this->model->valRule){
 							echo "<script>alert('Student cannot borrow a book. 2 books is already borrowed.')</script>";	
 						}//end of total borrowing condition
 

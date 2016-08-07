@@ -11,6 +11,9 @@
 		public $secId;
 		public $grdId;
 		public $sId;
+		public $totalDueDays;
+		public $finePrice;
+		public $delqRule;
 
 		public function __construct(){
 			parent::__construct();
@@ -84,6 +87,43 @@
 					$this->sId = $row['id'];
 				}
 			}
+		}
+
+		public function selOverDueDays($id){
+			$qry = "SELECT brLog.due_date, DATEDIFF(curDate(),brLog.due_date) AS dueDays from tbl_borrowing_logbook brLog WHERE id = $id";
+			$res = $this->con->query($qry);
+			if($res->num_rows ==1){
+				while($row = $res->fetch_assoc()){
+					$this->totalDueDays = $row['dueDays'];
+				}
+			}
+		}
+
+		public function selFineRule($bookNum){
+			$qry = "SELECT tbl_rules.value FROM tbl_rules WHERE rule = (select if(is_fiction = 1,'fiction_fine','non_fiction_fine') as kind from tbl_books where book_number = $bookNum)";
+			$res = $this->con->query($qry);
+			if($res->num_rows ==1){
+				while($row = $res->fetch_assoc()){
+					$this->finePrice = $row['value'];
+				}
+				
+			}
+		}
+
+		public function selDeliquentRule(){
+			$qry = "SELECT tbl_rules.value FROM tbl_rules tblDel WHERE rule = 'deliquent_day_count'";
+			$res = $this->con->query();
+			
+			if($res->num_rows == 1){
+				while($row = $res->fetch_assoc()){
+					$this->delqRule = $row['value'];
+				}
+			}	
+		}
+
+		public function addDeliquent($sNum,$totDueDays){
+			$qry = "INSERT INTO tbl_deliquents SET student_id = (select id from tbl_students where student_num = '$sNum'), total_due_days = $totDueDays";
+			$res = $this->con->query($qry);
 		}
 	}
 ?>

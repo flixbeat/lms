@@ -1,12 +1,11 @@
 <script>
 	$(document).ready(function(){
 		
-		$('#addUsertype').change(function(){
+		/*$('#addUsertype').change(function(){
 			var x = $(this).val();
 			$('#addUserTypeId').val(x);
 			// alert($('#addUserTypeId').val());
-		});
-
+		});*/
 		$('#editUname').change(function(){
 			var y = $(this).val();
 			$('#editUnameHid').val(y);
@@ -18,8 +17,59 @@
 			$('#editUserType').val(z);
 			
 		});
-		
+
+		var pwd;
+		var conPwd;
+		$('.pwdLbl').hide();
+		$("#tfConf").blur(function(){
+			pwd = $('#tfPwd').val();
+			conPwd = $(this).val();
+		 	if(pwd!=conPwd){
+				//alert('Password mismatch');
+				$('.pwdLbl').fadeIn();
+			}
+			else if(pwd==conPwd){
+				$('.pwdLbl').hide();
+				$('#tfName').prop( "disabled", false);
+				$('#userType').prop( "disabled", false);
+				$('#btnSub').prop( "disabled", false);
+			}
+		});
+			
 	});
+
+	function checkLength(el) {
+	  if (el.value.length < 6) {
+	    alert("length must be 6 characters or greater");
+	    //$('#tfConf').prop( "disabled", true);
+	  }
+	  else if (el.value.length >= 6) {
+	  	//$('#tfConf').prop( "disabled", false);
+	  }
+	}
+
+	function checkLenUname(el) {
+	  if (el.value.length < 4) {
+	    alert("length must be 4 characters or greater");
+	    $('#tfPwd').prop( "disabled", true);
+	    $('#tfConf').prop( "disabled", true);
+	  }
+	  else if (el.value.length >= 6) {
+	  	$('#tfPwd').prop( "disabled", false);
+	  	$('#tfConf').prop( "disabled", false);
+
+	  }
+	}
+
+	function confirmPword(el) {
+	  if (el.value.length < 6) {
+	    alert("length must be 6 characters or greater")
+	  }
+	  else if (el.value.length >= 6) {
+	  	$('#tfConf').prop( "disabled", false);
+	  }
+	}
+
 </script>
 
 <div class="container">
@@ -94,23 +144,28 @@
 						<form id="add" action = "user_management.php" method = "post">
 							<div class="form-group">
 								<label>Username</label>
-								<input type="text" class="form-control" name="addUname">
+								<input type="text" class="form-control" name="addUname"  onblur="checkLenUname(this)">
 							</div>
 							<div class="form-group">
 								<label>Password</label>
-								<input type="password" class="form-control" name="addPword">
+								<input type="password" class="form-control" id="tfPwd" name="addPword" onblur="checkLength(this)"  minlength="6">
+							</div>
+							<div class="form-group">
+								<label>Confirm Password</label><p class="text-danger">(Re-enter password to confirm)</p>
+								<label class="bg-danger pwdLbl">Password mismatch</label>
+								<input type="password" class="form-control" name="confirmPword" onblur="checkLength(this)"  minlength="6" id = "tfConf">
 							</div>
 							<div class="form-group">
 								<label>Name</label>
-								<input type="text" class="form-control" name="addName">
+								<input type="text" class="form-control" id = "tfName" name="addName" disabled>
 							</div>
-							<div class="form-group">
+							<!--<div class="form-group">
 								<label>Position</label>
-								<input type="text" class="form-control" name="addPos">
-							</div>
+								<input type="text" class="form-control" id = "tfPosition" name="addPos" disabled>
+							</div>-->
 							<div class="form-group">
 								<label for = "adduserType">Usertype</label>
-								<select class = "form-control" id = "addUsertype" name = "addUserType">
+								<select class = "form-control" id = "userType" name = "addUserType" disabled>
 									
 									<?php
 										$temp_id = 0;
@@ -121,14 +176,14 @@
 											
 											if($temp_id == 0)
 												$temp_id = $id;
-											echo"<option value = '$id'>$ut</option>";
+											echo"<option value = $id>$ut</option>";
 										
 										}	
 									?> 
 								</select>									
 							</div>
-							<input type="hidden" name = "addUserType" id="addUserTypeId" value="<?php echo $temp_id; ?>">
-							<button name="btnAddUser" class="btn btn-primary">Save</button>
+							
+							<button name="btnAddUser" class="btn btn-primary" id = "btnSub" disabled>Save</button>
 						</form>
 					</div>
 				</div>

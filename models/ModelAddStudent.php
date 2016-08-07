@@ -45,7 +45,7 @@
 		public function addStudent($sNum,$grd,$sec,$LName,$FNAme,$MName){
 			$fullName = "$LName, $FNAme $MName";
 			$sy = $this->getCurrentSchoolYearId();
-			$qry = "INSERT INTO tbl_students (student_num,student_name_L,student_name_F,student_name_M,grade_level_id,section_id,school_year_id,date_created,student_name)
+			$qry = "INSERT INTO tbl_students (student_num,last_name,first_name,middle_name,grade_level_id,section_id,school_year_id,tbl_students.date,student_name)
 					 VALUES ('$sNum','$LName','$FNAme','$MName',(SELECT id FROM tbl_grade_levels WHERE grade_level = '$grd'),$sec,$sy,curDate(),'$fullName')";
 			$res = $this->con->query($qry);
 			return $res;

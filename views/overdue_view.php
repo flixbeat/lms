@@ -11,8 +11,9 @@
 					<input type="hidden" name="sId" value = "<?php echo $data['sId']?>">
 					<input type="hidden" class="form-control" name="tfDDate" id="tfDDate" value = "<?php echo $data['dDate']?>">
 					<input type="hidden" class="form-control" name="tfRDate" id="tfRDate" value = "<?php echo date('Y/m/d')?>">
-					<label>Enter Due Amount</label>
-					<input type="text" class="form-control" name="tfAmt" id="tfAmt"><br>
+					<label>Over Due Fine Amount</label>
+					<input type="text" class="form-control" value = "<?php echo $data['totFine']?>" disabled><br>
+					<input type="hidden" class="form-control" name="tfAmt" id="tfAmt" value = "<?php echo $data['totFine']?>">
 					<div class="pull-right">
 						<button class="btn btn-primary" name="btnSub">Submit</button>
 					</div>

@@ -145,5 +145,30 @@
 		function containsChar($char,$str){
 			return (strpos($str, $char) !== false);
 		}
+
+		public function selUser($userId){
+			$qry = "SELECT uname,user_type_id,pword,(select user_type from tbl_usertypes where id = tbl_users.user_type_id) as usertype FROM tbl_users WHERE id = $userId";
+			$res = $this->con->query($qry); 
+			if($res->num_rows == 1){
+				while ($row = $res->fetch_assoc()) {
+					$this->Uname = $row['uname'];
+					$this->usertype = $row['usertype'];
+					$this->pword = $row['pword'];
+				}
+			}
+		}
+
+		public function checkOldPassword($oldPwd){
+			$qry = "SELECT pword FROM tbl_users WHERE pword = md5('$oldPwd')";
+			$res = $this->con->query($qry);
+			if($res->num_rows == 1){
+				$this->chkOldPwd =1;
+			}
+			else if($res->num_rows == 0){
+				$this->chkOldPwd =0;
+			}
+		}
+
+		 
 	}
 ?>

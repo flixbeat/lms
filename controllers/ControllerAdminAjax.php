@@ -107,7 +107,13 @@
 					$model->filterByDate($id,$d1,$d2);
 					
 				}
-			}	
+			}
+			else if($action == 'chkOldPwd'){
+				if(isset($_POST['oldPwd'])){
+					$oldPwd = $_POST['oldPwd'];
+					echo $pwd = md5($oldPwd);
+				}
+			}		
 			# mine
 			else if($action == 'printAuthorCard'){
 				$bookId = $_POST['bookId'];

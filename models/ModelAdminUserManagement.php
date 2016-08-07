@@ -4,6 +4,7 @@
 	class ModelAdminUserManagement extends ModelAdmin{
 
 		public $user;
+		public $userChk;
 
 		public function __construct(){
 			parent::__construct();
@@ -47,16 +48,18 @@
 			return $result;
 		}
 		//add user
-		public function addUser($uname, $pwd,$userTypeId,$name, $pos){
+		public function addUser($uname,$pwd,$userTypeId,$name){
 			$q = "SELECT id FROM tbl_users WHERE uname LIKE '$uname'";
 			$res = $this->con->query($q);
 			if($res->num_rows == 0){
-				$query = "INSERT INTO tbl_users SET uname = '$uname', pword = md5('$pwd') ,created = curDate(), user_type_id = '$userTypeId', name = '$name', position = '$pos' ";
-				$this->con->query($query);		
-				echo "<script>A new user has been created.</script>";
+				$query = "INSERT INTO tbl_users SET uname = '$uname', pword = md5('$pwd') ,created = now(), user_type_id = $userTypeId, name = '$name'";
+				$this->con->query($query);	
+				$this->userChk =0;	
+				#echo "<script>A new user has been created.</script>";
 			}
-			else{
-				echo "<script>Username already exist.</script>";
+			else if($res->num_rows == 1){
+				$this->userChk =1;
+				#echo "<script>Username already exist.</script>";
 			}			
 		}
 		
