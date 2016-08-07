@@ -58,6 +58,7 @@
 					$data['copy'] = $this->model->book->copy;
 					$data['tracing'] = $this->model->book->tracing;
 					$data['sf'] = $this->model->book->sf;
+					$data['is_fiction'] = $this->model->book->isFiction;
 
 					$data['remarksOptions'] = $this->model->getRemarks(); # drop down choices
 
@@ -105,12 +106,14 @@
 				$copy = $_POST['copy'];
 				$tracing = $_POST['tracing'];
 				$sf = $_POST['special_features'];
+				$isFiction = $_POST['is_fiction'];
 
 				# insert data to database and get response message
 				$response = $this->model->editBook(
 					$bookNumber,$isbn,$title,$author,$publisher,
 					$description,$pages,$year,$dateReceived,
-					$edition,$cost,$source,$class,$qty,$remarks,$copy,$tracing,$sf
+					$edition,$cost,$source,$class,$qty,$remarks,$copy,$tracing,$sf,
+					$isFiction
 				);
 
 				$data['response'] = $response;

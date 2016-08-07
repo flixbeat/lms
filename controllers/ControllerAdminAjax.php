@@ -40,9 +40,10 @@
 			else if($action == "setActive"){
 				$bookId = $_POST['bookId'];
 				$status = $_POST['status'];
+				$reason = $_POST['reason'];
 				$this->loadModel('ModelActivateBook');
 				$this->model = new ModelActivateBook();
-				$this->model->setActive($status,$bookId);
+				$this->model->setActive($status,$bookId,$reason);
 			}
 			else if($action == "saveStudSection"){
 				$records = $_POST['records'];

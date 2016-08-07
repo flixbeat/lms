@@ -29,7 +29,7 @@
 		}
 
 		public function selBook($class){
-			$qry = "SELECT id,book_number,title,copy,if(availability = 1,'Available','Unavailable') as stat, availability FROM tbl_books WHERE class = (select id from tbl_classes where class = '$class') ORDER BY copy ASC";
+			$qry = "SELECT id,book_number,title,copy,status,if(availability = 1,'Available','Unavailable') as stat, availability FROM tbl_books WHERE class = (select id from tbl_classes where class = '$class') ORDER BY copy ASC";
 			$res = $this->con->query($qry);
 			return $res;
 		}

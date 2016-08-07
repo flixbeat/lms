@@ -82,6 +82,14 @@
 								</div>
 							</div>
 							<div class = "form-group">
+								<label>Category</label>
+								<select class = "form-control" id = "cbCategory">
+									<option value = "1">Fiction</option>
+									<option value = "0">Non-Fiction</option>
+								</select>
+								<input type = "hidden" name = "is_fiction" id = "is_fiction" value = "1">
+							</div>
+							<div class = "form-group">
 								<label>Number of Copies</label> <small>(2 or more copies will generate additional access number.)</small>
 								<input type = "number" class = "form-control" min = "1" value = "1" name = "copies" required >
 							</div>
@@ -376,6 +384,9 @@
 			});
 		});
 
+		$('#cbCategory').change(function(){
+			$('#is_fiction').val($(this).val());
+		});
 		// ====================================================================================
 
 		$('#author2').keyup(function(){

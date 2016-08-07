@@ -67,6 +67,8 @@
 				$cost = $_POST['cost'];
 				$source = $_POST['source'];
 				#$qty = $_POST['qty'];
+				$isFiction = $_POST['is_fiction'];
+
 				$qty = 1;
 				$sf = $_POST['special_features'];
 				$tracing = $_POST['tracing'];
@@ -77,7 +79,8 @@
 				$response = $this->model->createBook(
 					$bookNumber,$isbn,$title,$author,$publisher,
 					$description,$pages,$year,$dateReceived,
-					$edition,$cost,$source,$class,$qty,$remarks,$copies,$tracing,$sf
+					$edition,$cost,$source,$class,$qty,$remarks,$copies,$tracing,$sf,
+					$isFiction
 				);
 
 				$data['response'] = $response;

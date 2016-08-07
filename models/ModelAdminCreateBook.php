@@ -112,7 +112,7 @@
 			$bookNumber,$isbn,$title,$author,$publisher,
 			$desc,$pages,$year,$dateReceived,
 			$edition,$cost,$source,$class,$qty,$remarks,$copies,
-			$tracing,$sf)
+			$tracing,$sf,$isFiction)
 		{
 			$bookNumber = $this->sanitize($bookNumber);
 			$isbn = $this->sanitize($isbn);
@@ -135,6 +135,7 @@
 
 			$tracing = $this->sanitize($tracing);
 			$sf = $this->sanitize($sf);
+			$isFiction = $this->sanitize($isFiction);
 
 			# checking empty fields and and setting defaults
 
@@ -255,7 +256,8 @@
 					$query = "INSERT INTO tbl_books SET book_number = $bookNumber+($i-1), isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
 					short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
 					edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', 
-					qty = '$qty', copy = $oldCopies + $i, remarks = '$remarksId', tracing = '$tracing', special_features = '$sf', status = 'A', availability = '1' ";	
+					qty = '$qty', copy = $oldCopies + $i, remarks = '$remarksId', tracing = '$tracing', 
+					special_features = '$sf', status = 'A', availability = '1', is_fiction = '$isFiction' ";	
 					
 					# INSERT ALL DATA ENTRY TO DATABASE
 					$this->con->query($query) or die($this->con->error);

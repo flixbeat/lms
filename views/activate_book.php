@@ -62,16 +62,25 @@
 
 </div>
 <script type="text/javascript">
-	$('.chkActive').click(function(){
-		var isChecked = $(this).is(':checked');
-		var bookId = $(this).val();
-		var status = null;
+	var isChecked;
+	var bookId;
+	var status;
 
-		if(isChecked)
+	$('.chkActive').click(function(){
+		isChecked = $(this).is(':checked');
+		bookId = $(this).val();
+		status = null;
+
+		if(isChecked){
 			status = 'A';
-		else
+			doAjaxClear();
+		}
+		else{
 			status = 'U';
+			popup();
+		}
 		
+		/*
 		$.post('admin.php',
 			{
 				ajax: true,
@@ -83,6 +92,41 @@
 				
 			}
 		);
+*/
 	});
+
+	function popup(){
+		window.open('views/popup_reason_for_deactivation.php','Reason for Deactivation',"width=310,height=210,scrollable=yes");
+	}
+
+	function doAjax(reason){
+		$.post('admin.php',
+			{
+				ajax: true,
+				action: 'setActive',
+				bookId: bookId,
+				status: status,
+				reason: reason
+			},
+			function(data){
+				
+			}
+		);
+	}
+
+	function doAjaxClear(){
+		$.post('admin.php',
+			{
+				ajax: true,
+				action: 'setActive',
+				bookId: bookId,
+				status: null,
+				reason: ''
+			},
+			function(data){
+				
+			}
+		);	
+	}
 
 </script>

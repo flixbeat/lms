@@ -59,7 +59,7 @@
 								<th>Access Number</th>
 								<th>Book Title</th>
 								<th>Book Copy</th>
-								<th>Book Status</th>
+								<th>Availability</th>
 								<th>Borrow Book</th>
 							</thead>
 
@@ -68,6 +68,7 @@
 						#echo $rowNum;
 						while($row = $data['resBook']->fetch_assoc()){
 							$id = $row['id'];
+							$active = $row['status'];
 							$title = $row['title'];
 							$copy = $row['copy'];
 							$acNum = $row['book_number'];
@@ -80,14 +81,29 @@
 									<td>$copy</td>
 									<td>$stat</td>
 									
+									
 
 								";
 							if($avail==0){
-								echo "<td><button class = 'btn btn-success' id = 'btnBrw' disabled>Borrow</button></td></tr></tbody>";
+
+								if($active== 'U'){
+									echo "<td><button class = 'btn btn-success' id = 'btnBrw' disabled>Inactive</button></td></tbody>";
+								}
+								else{
+									echo "<td><button class = 'btn btn-success' id = 'btnBrw' disabled>Borrow</button></td></tr></tbody>";
+								}	
 							}
 							else if($avail==1){
-								echo"<td><button class = 'btn btn-success' id = 'btnBrw' value = '$val' data-toggle = 'modal' data-target = '#borrow-book-modal'>Borrow</button></td></tr></tbody>";
+								
+								if($active== 'U'){
+									echo "<td><button class = 'btn btn-success' id = 'btnBrw' disabled>Inactive</button></td></tbody>";
+								}
+								else{
+									echo"<td><button class = 'btn btn-success' id = 'btnBrw' value = '$val' data-toggle = 'modal' data-target = '#borrow-book-modal'>Borrow</button></td></tr></tbody>";
+								}
 							}
+
+							
 						}
 					echo "</table>";
 				}

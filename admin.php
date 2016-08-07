@@ -48,6 +48,10 @@
 			require_once 'controllers/ControllerDeleteRule.php';
 			$controller = new ControllerDeleteRule();
 		}
+		else if($_GET['action']=='viewDelq'){
+			require_once 'controllers/ControllerViewDelq.php';
+			$controller = new ControllerViewDelq();
+		}
 	}
 	# THIS CONDITION WILL ONLY BE EXECUTED BY AJAX CALL
 	else if(isset($_POST['ajax'])){

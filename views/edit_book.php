@@ -70,6 +70,14 @@
 								<label>Publisher</label>
 								<input text = "text" class = "form-control" name = "publisher" value = "<?php echo $data['publisher'];?>" required/>
 							</div>
+							<div class = "form-group">
+								<label>Category</label>
+								<select class = "form-control" id = "cbCategory">
+									<option value = "1">Fiction</option>
+									<option value = "0">Non-Fiction</option>
+								</select>
+								<input type = "hidden" name = "is_fiction" id = "is_fiction" value = "<?=$data['is_fiction']?>">
+							</div>
 						</div>
 						<div class = "col-md-4">
 							<div class = "well well-md"><strong>2 Core Info</strong></div>
@@ -262,6 +270,11 @@
 			$('input[name="remarks"]').val($(this).val());
 		});
 
+		$('#cbCategory').change(function(){
+			$('#is_fiction').val($(this).val());
+		});
+
+		$('#cbCategory').val("<?=$data['is_fiction']?>");
 		// ====================================================================================
 
 		$('#author2').keyup(function(){

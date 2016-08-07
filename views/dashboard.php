@@ -180,6 +180,8 @@
 							onclick = "location.href='student_edit.php?action=editStudent'">Update Student Data</button>
 						<button class = "btn btn-default btn-block"
 							onclick = "location.href='student_search.php?action=searchStudent'">View Student Data</button>
+						<button class = "btn btn-default btn-block"
+							onclick = "location.href='delq_view.php?action=viewDelq'">View Deliquent Records</button>
 						<hr>
 						<button class = "btn btn-default btn-block"
 								onclick = "location.href='student_manage.php'">General Student Management</button>

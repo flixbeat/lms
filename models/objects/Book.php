@@ -20,6 +20,7 @@
 		public $copy;
 		public $tracing;
 		public $sf;
+		public $isFiction;
 
 		public function __construct($bookId){
 			$this->connectDB();
@@ -44,6 +45,7 @@
 			$this->copy = $row['copy'];
 			$this->tracing = $row['tracing'];
 			$this->sf = $row['special_features'];
+			$this->isFiction = $row['is_fiction'];
 		}
 
 		public function getAuthorText(){

@@ -16,7 +16,6 @@
 			
 			# check book availability
 			if(!isset($_GET['btnChk'])){
-				
 				$resClass = $this->model->selBookClass();
 				$data = array('resClass'=>$resClass,'title'=>$title1);
 				$this->loadView('head',$data);

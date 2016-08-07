@@ -45,8 +45,8 @@
 			return $this->con->query($q);
 		}
 
-		function setActive($status,$bookId){
-			$q = "UPDATE tbl_books SET status = '$status' WHERE id = $bookId";
+		function setActive($status,$bookId,$reason){
+			$q = "UPDATE tbl_books SET status = '$status', reason_for_deactivation = '$reason' WHERE id = $bookId";
 			$this->con->query($q);
 		}
 	}
