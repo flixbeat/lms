@@ -12,7 +12,7 @@
 					<form action = "return.php" method = "get">
 						<div class = "form-group">
 							<p><?php echo "Today's Date " . date("Y/m/d")?></p>
-							<label>Student Number</label>
+							<label>Student LRN</label>
 							<input type="text" class="form-control"	id = "tfStNum" name="tfStNum" required><br>
 							<label>Access Number</label>
 							<input type="number" class="form-control" id = "tfBkNum" name="tfBkNum" required>
@@ -39,7 +39,7 @@
 				<div class = "panel-body">
 					<div class = "form-group">
 						<p><?php echo "Today's Date " . date("Y/m/d")?></p>
-						<label>Student Number</label>
+						<label>Student LRN</label>
 						<input type="text" class="form-control"	id = "infoStNum" disabled/><br>
 						<label>Student Name</label>
 						<input type = "text" class="form-control" id = "infoStName" disabled><br>

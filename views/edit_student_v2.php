@@ -14,7 +14,7 @@
 			</div>
 				<form action="student_edit_v2.php" method="get">
 					<div class="panel-body">
-						<label>Student Number</label>
+						<label>Student LRN</label>
 						<input type="text" class="form-control" value = "<?php echo $data['sNum'];?>" name = "tfSNum" id = "tfSNum" disabled>
 						<input type="hidden" class="form-control" value = "<?php echo $data['sNum'];?>" name = "SNum">
 						<br>

@@ -45,9 +45,9 @@
 				$userTypeId = $_POST['editUserType'];
 				$pwd = $_POST['editPword'];
 				$name = $_POST['editName'];
-				$pos = $_POST['editPos'];
+				#$pos = $_POST['editPos'];
 
-				$this->model->editUser($id,$pwd,$userTypeId,$name,$pos);
+				$this->model->editUser($id,$pwd,$userTypeId,$name);
 
 			}
 

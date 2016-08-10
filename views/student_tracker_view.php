@@ -62,7 +62,7 @@
 			</div>
 			<form action="student_tracker.php" method = "get">
 				<div class = "panel-body">
-					<label>Student Number</label>
+					<label>Student LRN</label>
 					<input type = "text" name = "tfSnum" class="form-control" required>
 					<div class = "pull-right"><br>
 						<button class="btn btn-primary" value="<?php echo $op?>">Login</button>

@@ -12,7 +12,7 @@
 					<input type="hidden" class="form-control" name="tfDDate" id="tfDDate" value = "<?php echo $data['dDate']?>">
 					<input type="hidden" class="form-control" name="tfRDate" id="tfRDate" value = "<?php echo date('Y/m/d')?>">
 					<label>Over Due Fine Amount</label>
-					<input type="text" class="form-control" value = "<?php echo $data['totFine']?>" disabled><br>
+					<input type="text" class="form-control" value = "Php <?php echo $data['totFine'].".00"?>" disabled><br>
 					<input type="hidden" class="form-control" name="tfAmt" id="tfAmt" value = "<?php echo $data['totFine']?>">
 					<div class="pull-right">
 						<button class="btn btn-primary" name="btnSub">Submit</button>
@@ -21,7 +21,7 @@
 				</div>
 			</form>
 			<div class="col-sm-4">
-				<label>Student Num</label>
+				<label>Student LRN</label>
 				<input type="text" class="form-control" name="tfSNum" id="tfSName" value = "<?php echo $data['idSnum']?>" disabled><br>
 				<label>Student Name</label>
 				<input type="text" class="form-control" name="tfSName" id="tfSName" value = "<?php echo $data['sName']?>" disabled><br>

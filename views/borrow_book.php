@@ -145,7 +145,7 @@
 							<input type="hidden" name = "tit2" id = "tit2" size = "60">
 							<input type="hidden" name = "cpy2" id = "cpy2" size = "1">
 							<input type="hidden" name="cls" value="<?php echo $data['class']?>">
-							<label>Student ID Number</label>
+							<label>Student LRN</label>
 							<input type = 'text' class = 'form-control' name = 'tfSNum' required><br>
 							<label>Due Date</label>
 							<input type = 'date' class = 'form-control' name = 'tfdDate' required><br>

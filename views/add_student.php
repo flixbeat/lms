@@ -21,7 +21,7 @@
 				<strong>Add Student Panel</strong>
 			</div>
 				<div class="panel-body">
-					<label>Student Number</label>
+					<label>Student LRN</label>
 					<input type="text" class="form-control" id ="sNum_v1" required>
 					<br>
 					<p class = 'text-danger'>(Please check first the student number to enable the form.)    

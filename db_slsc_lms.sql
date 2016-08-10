@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2016 at 08:09 PM
+-- Generation Time: Aug 10, 2016 at 04:04 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -67,7 +67,10 @@ INSERT INTO `tbl_authors` (`id`, `author`) VALUES
 (33, 'Yu Yuan Yoyo Boy'),
 (34, 'nancy flores~dionisio pandingan~ely buendia'),
 (35, 'kalbo~bokal~palkups~ogags'),
-(36, 'hawhaw');
+(36, 'hawhaw'),
+(37, 'Yu Yuan Yoyo Girl~Yu Yuan Yoyo Boy'),
+(38, 'floyd~dave~karl'),
+(39, 'anna~belen~karl~diego');
 
 -- --------------------------------------------------------
 
@@ -120,7 +123,7 @@ INSERT INTO `tbl_books` (`id`, `book_number`, `title`, `edition`, `author`, `pag
 (14, 12, 'Experiencing Language Nxx', '3', 17, 314, 3, 2001, '2016-06-10', 3, 5, 1, '456-456-456', 2, 3, 'asfd', 1, 'A', NULL, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (16, 14, 'the 8''s', '8', 20, 88, 13, 1888, '1998-08-08', 7, 888, 5, '888-888-888', 2, 8, 'all about 8''s', 1, 'A', NULL, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (17, 15, 'Experiencing Language Nxx', '1', 6, 123, 9, 2020, '2016-06-30', 2, 123, 4, '123-123-123', 14, 1, 'asd', 1, 'A', NULL, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
-(18, 16, 'floyd stroy 102', '1', 16, 100, 16, 2000, '2016-06-30', 1, 900, 2, '990-123-900', 4, 10, 'about the book''s abstract', 1, 'A', NULL, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
+(18, 16, 'floyd stroy 102', '1', 16, 100, 16, 2000, '2016-06-30', 1, 900, 2, '990-123-900', 4, 10, 'about the book''s abstract', 1, 'U', NULL, 'Special Feature 308', 'Philippine Tracing Test 123', 1, 'destroyed'),
 (74, 17, 'yep', '', 10, 0, 8, 0, '2016-07-27', 8, 0, 1, '456-456-456', 9, 1, '', 1, 'A', 1, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (75, 18, 'yep', '', 10, 0, 8, 0, '2016-07-27', 8, 0, 1, '456-456-456', 9, 1, '', 1, 'A', 2, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (76, 19, 'yep', '', 10, 0, 8, 0, '2016-07-27', 8, 0, 1, '456-456-456', 9, 1, '', 1, 'A', 3, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
@@ -128,7 +131,7 @@ INSERT INTO `tbl_books` (`id`, `book_number`, `title`, `edition`, `author`, `pag
 (78, 21, 'yep', '', 10, 0, 8, 0, '2016-07-27', 8, 0, 1, '456-456-456', 9, 1, '', 1, 'A', 5, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (79, 22, 'yep', '', 10, 0, 8, 0, '2016-07-27', 8, 0, 1, '456-456-456', 9, 1, '', 1, 'A', 6, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (83, 23, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'U', 1, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
-(84, 24, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 0, 'A', 2, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
+(84, 24, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'A', 2, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (85, 25, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'A', 3, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (86, 26, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'A', 4, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (87, 27, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'A', 5, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
@@ -143,9 +146,9 @@ INSERT INTO `tbl_books` (`id`, `book_number`, `title`, `edition`, `author`, `pag
 (96, 36, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'A', 14, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (97, 37, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'A', 15, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
 (98, 38, 'The big dog', '2', 25, 301, 20, 2003, '2016-07-27', 2, 899, 2, '3123-551-61', 50, 1, 'sample abstract', 1, 'A', 16, 'Special Feature 308', 'Philippine Tracing Test 123', 1, NULL),
-(99, 39, 'Another Bottle', '1', 33, 300, 6, 2010, '2016-07-28', 1, 900, 2, '123-456-789', 51, 1, 'Sample Abstract', 1, 'A', 1, 'Special Offerday', 'Le Heading of This', 1, NULL),
-(100, 40, 'Another Bottle', '1', 33, 300, 6, 2010, '2016-07-28', 1, 900, 2, '123-456-789', 51, 1, 'Sample Abstract', 1, 'A', 1, 'Special Offerday', 'Le Heading of This', 1, NULL),
-(101, 41, 'Another Bottle', '1', 33, 300, 6, 2010, '2016-07-28', 1, 900, 2, '123-456-789', 51, 1, 'Sample Abstract', 1, 'A', 1, 'Special Offerday', 'Le Heading of This', 1, NULL),
+(99, 39, 'Another Bottle This', '1', 37, 300, 6, 2010, '2016-07-28', 1, 900, 2, '123-456-789', 51, 1, 'Sample Abstract', 1, 'A', 1, 'Special Offerday', 'Le Heading of This', 1, NULL),
+(100, 40, 'Another Bottle This', '1', 37, 300, 6, 2010, '2016-07-28', 1, 900, 2, '123-456-789', 51, 1, 'Sample Abstract', 1, 'A', 1, 'Special Offerday', 'Le Heading of This', 1, NULL),
+(101, 41, 'Another Bottle This', '1', 37, 300, 6, 2010, '2016-07-28', 1, 900, 2, '123-456-789', 51, 1, 'Sample Abstract', 1, 'A', 1, 'Special Offerday', 'Le Heading of This', 1, NULL),
 (102, 42, 'The one sixty', '1', 21, 160, 15, 1600, '2016-08-02', 1, 160, 3, '160-160-160', 52, 1, 'siga ka isu?', 1, 'A', 1, 'Special Offerday 160', 'Principles of 160', 1, NULL),
 (103, 43, 'The one sixty', '1', 21, 160, 15, 1600, '2016-08-02', 1, 160, 3, '160-160-160', 52, 1, 'siga ka isu?', 1, 'A', 2, 'Special Offerday 160', 'Principles of 160', 1, NULL),
 (104, 44, 'Computer Basics 101', '5', 27, 500, 21, 2001, '2016-08-05', 1, 160, 1, '445-5092-123', 53, 1, 'PoPo Carrots', 1, 'A', 1, 'Atchaka po Kerrots', 'All bout teh karet', 1, NULL),
@@ -153,14 +156,17 @@ INSERT INTO `tbl_books` (`id`, `book_number`, `title`, `edition`, `author`, `pag
 (106, 46, 'Computer Basics 101', '5', 27, 500, 21, 2001, '2016-08-05', 1, 160, 1, '445-5092-123', 53, 1, 'PoPo Carrots', 1, 'A', 3, 'Atchaka po Kerrots', 'All bout teh karet', 1, NULL),
 (107, 47, 'Computer Basics 101', '5', 27, 500, 21, 2001, '2016-08-05', 1, 160, 1, '445-5092-123', 53, 1, 'PoPo Carrots', 1, 'A', 4, 'Atchaka po Kerrots', 'All bout teh karet', 1, NULL),
 (108, 48, 'ang alamat ng saging', '1', 34, 100, 3, 2000, '2016-08-05', 4, 300, 2, '100-100-100', 54, 1, 'ang teknik sa pagkuha ng masarap na saging, yum.', 1, 'U', 1, 'Special Feature 101', 'Banana ', 1, NULL),
-(109, 49, 'The kals all the way', '1', 35, 300, 22, 2012, '2016-08-07', 1, 3000, 1, '900-123-321', 56, 1, 'pano maging kalbo sa totoong buhay', 0, 'A', 1, 'special kalbo 123', 'kalbo rulez', 1, NULL),
+(109, 49, 'The kals all the way', '1', 35, 300, 22, 2012, '2016-08-07', 1, 3000, 1, '900-123-321', 56, 1, 'pano maging kalbo sa totoong buhay', 1, 'A', 1, 'special kalbo 123', 'kalbo rulez', 1, NULL),
 (110, 50, 'The kals all the way', '1', 35, 300, 22, 2012, '2016-08-07', 1, 3000, 1, '900-123-321', 56, 1, 'pano maging kalbo sa totoong buhay', 1, 'A', 1, 'special kalbo 123', 'kalbo rulez', 1, NULL),
 (111, 51, 'The kals all the way', '1', 35, 300, 22, 2012, '2016-08-07', 1, 3000, 1, '900-123-321', 56, 1, 'pano maging kalbo sa totoong buhay', 1, 'A', 1, 'special kalbo 123', 'kalbo rulez', 1, NULL),
 (112, 52, 'The kals all the way', '1', 35, 300, 22, 2012, '2016-08-07', 1, 3000, 1, '900-123-321', 56, 1, 'pano maging kalbo sa totoong buhay', 1, 'A', 1, 'special kalbo 123', 'kalbo rulez', 1, NULL),
 (113, 53, 'The kals all the way', '1', 35, 300, 22, 2012, '2016-08-07', 1, 3000, 1, '900-123-321', 56, 1, 'pano maging kalbo sa totoong buhay', 1, 'A', 1, 'special kalbo 123', 'kalbo rulez', 1, NULL),
 (114, 54, 'Testing the fiction', '', 36, 0, 23, 0, '2016-08-07', 8, 0, 1, '321-123-321', 57, 1, '', 1, 'A', 1, '', '', 1, NULL),
-(115, 55, 'Testing the fiction', '', 36, 0, 23, 0, '2016-08-07', 8, 0, 1, '321-123-321', 57, 1, '', 1, 'A', 1, '', '', 1, ''),
-(116, 56, 'Testing the fiction', '', 36, 0, 23, 0, '2016-08-07', 8, 0, 1, '321-123-321', 57, 1, '', 1, 'A', 1, '', '', 1, NULL);
+(115, 55, 'Testing the fiction', '', 36, 0, 23, 0, '2016-08-07', 8, 0, 1, '321-123-321', 57, 1, '', 1, 'A', 2, '', '', 1, ''),
+(116, 56, 'Testing the fiction', '', 36, 0, 23, 0, '2016-08-07', 8, 0, 1, '321-123-321', 57, 1, '', 1, 'A', 3, '', '', 1, NULL),
+(117, 57, 'asdf asdf', '', 39, 0, 2, 0, '2016-08-08', 8, 0, 1, 'asdf-123-123', 58, 1, '', 1, 'A', 1, '', '', 1, NULL),
+(118, 58, 'asdf asdf', '', 39, 0, 2, 0, '2016-08-08', 8, 0, 1, 'asdf-123-123', 58, 1, '', 1, 'A', 2, '', '', 1, NULL),
+(119, 59, 'asdf asdf', '', 39, 0, 2, 0, '2016-08-08', 8, 0, 1, 'asdf-123-123', 58, 1, '', 1, 'A', 3, '', '', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -185,8 +191,10 @@ CREATE TABLE `tbl_borrowing_logbook` (
 --
 
 INSERT INTO `tbl_borrowing_logbook` (`id`, `book_id`, `student_id`, `cur_date`, `due_date`, `over_due_status`, `return_date`, `return_status`, `school_year_id`) VALUES
-(46, 109, 22, '2016-08-08', '2016-08-08', NULL, NULL, 0, 2),
-(47, 84, 22, '2016-08-08', '2016-08-11', NULL, NULL, 0, 2);
+(46, 109, 22, '2016-08-08', '2016-07-08', NULL, '2016-08-08', 1, 2),
+(47, 84, 22, '2016-08-08', '2016-08-11', NULL, '2016-08-08', 1, 2),
+(48, 100, 3, '2016-08-08', '2016-07-31', 1, '2016-08-08', 1, 2),
+(49, 100, 3, '2016-08-08', '2016-07-31', 1, '2016-08-08', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -225,7 +233,8 @@ INSERT INTO `tbl_classes` (`id`, `class`) VALUES
 (54, 'ALM-100-100'),
 (55, 'AKK-171-330'),
 (56, 'KAL-123-123'),
-(57, 'MAK-123-123');
+(57, 'MAK-123-123'),
+(58, 'asdf-123-123');
 
 -- --------------------------------------------------------
 
@@ -245,7 +254,8 @@ CREATE TABLE `tbl_deliquents` (
 --
 
 INSERT INTO `tbl_deliquents` (`id`, `student_id`, `total_due_days`, `remove_status`) VALUES
-(1, 22, 31, NULL);
+(1, 22, 31, NULL),
+(2, 22, 31, NULL);
 
 -- --------------------------------------------------------
 
@@ -455,7 +465,22 @@ CREATE TABLE `tbl_overdue_fines` (
 INSERT INTO `tbl_overdue_fines` (`id`, `borrow_id`, `student_id`, `due_date`, `date_return`, `amount`, `school_year_id`) VALUES
 (1, 37, 3, '2016-08-01', '2016-08-02', 500, 2),
 (2, 41, 3, '2016-08-04', '2016-08-05', 2, 2),
-(3, 43, 22, '2016-07-07', '2016-08-07', 62, 2);
+(3, 43, 22, '2016-07-07', '2016-08-07', 62, 2),
+(4, 48, 3, '2016-07-31', '2016-08-08', 16, 2),
+(5, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(6, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(7, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(8, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(9, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(10, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(11, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(12, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(13, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(14, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(15, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(16, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(17, 49, 3, '2016-07-31', '2016-08-08', 16, 2),
+(18, 49, 3, '2016-07-31', '2016-08-08', 16, 2);
 
 -- --------------------------------------------------------
 
@@ -709,10 +734,11 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `uname`, `pword`, `modified`, `created`, `user_type_id`, `name`, `position`, `last_login`) VALUES
-(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '2016-06-12 11:43:11', '2016-06-12 11:43:16', 1, 'mr. admin', 'System Admin', '2016-08-07'),
+(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '2016-08-08 00:00:00', '2016-06-12 11:43:16', 1, 'Dave', '', '2016-08-08'),
 (2, 'dave', '1610838743cc90e3e4fdda748282d9b8', '2016-08-01 00:00:00', '2016-08-01 00:00:00', 2, 'von', 'Librarian', '2016-08-02'),
 (4, 'karl', '9dd4e461268c8034f5c8564e155c67a6', NULL, '2016-08-05 00:00:00', 2, 'karl', 'User', '2016-08-05'),
-(5, 'floyd', '1ea194b34904d94cd5a6cc79a9ea7769', NULL, '2016-08-07 23:53:39', 2, 'floyd', NULL, NULL);
+(5, 'floyd', 'e10adc3949ba59abbe56e057f20f883e', '2016-08-08 00:00:00', '2016-08-07 23:53:39', 1, 'Floyd', NULL, '2016-08-08'),
+(6, 'isla', '6ebe76c9fb411be97b3b0d48b791a7c9', NULL, '2016-08-08 11:38:45', 2, 'Edmark', NULL, '2016-08-08');
 
 -- --------------------------------------------------------
 
@@ -859,27 +885,27 @@ ALTER TABLE `tbl_usertypes`
 -- AUTO_INCREMENT for table `tbl_authors`
 --
 ALTER TABLE `tbl_authors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `tbl_books`
 --
 ALTER TABLE `tbl_books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 --
 -- AUTO_INCREMENT for table `tbl_borrowing_logbook`
 --
 ALTER TABLE `tbl_borrowing_logbook`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `tbl_classes`
 --
 ALTER TABLE `tbl_classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `tbl_deliquents`
 --
 ALTER TABLE `tbl_deliquents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_editions`
 --
@@ -904,7 +930,7 @@ ALTER TABLE `tbl_lrc`
 -- AUTO_INCREMENT for table `tbl_overdue_fines`
 --
 ALTER TABLE `tbl_overdue_fines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `tbl_publishers`
 --
@@ -944,7 +970,7 @@ ALTER TABLE `tbl_students`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_usertypes`
 --

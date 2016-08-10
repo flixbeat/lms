@@ -63,8 +63,8 @@
 			}			
 		}
 		
-		public function editUser($id,$pwd,$userTypeId,$name,$pos){
-			$query = "UPDATE tbl_users SET pword = md5('$pwd'), modified = curDate(), user_type_id = '$userTypeId', name = '$name', position = '$pos' WHERE id = '$id'  ";
+		public function editUser($id,$pwd,$userTypeId,$name){
+			$query = "UPDATE tbl_users SET pword = md5('$pwd'), modified = curDate(), user_type_id = '$userTypeId', name = '$name' WHERE id = '$id'  ";
 			$this->con->query($query);
 			echo "<script>User has been edited.</script>";
 		}

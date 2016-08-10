@@ -137,7 +137,7 @@
 		var data = $(elementId).html();
 		
 		var mywindow = window.open('', 'my div', 'height=640,width=800');
-        mywindow.document.write('<html><head><title>Author Card</title>');
+        mywindow.document.write('<html><head><title>Book Masterlist</title>');
         mywindow.document.write('<link rel="stylesheet" href="css/tabular.css" type="text/css" />');
         mywindow.document.write('</head><body >');
         mywindow.document.write(data);

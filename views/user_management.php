@@ -35,7 +35,23 @@
 				$('#btnSub').prop( "disabled", false);
 			}
 		});
-			
+		
+		$('.pwdLblEd').hide();
+		var pwdEd;
+		var conPwdEd;
+		$("#tfConfEd").blur(function(){
+			pwdEd = $('#editPword').val();
+			conPwdEd = $(this).val();
+		 	if(pwdEd!=conPwdEd){
+				//alert('Password mismatch');
+				$('.pwdLblEd').fadeIn();
+			}
+			else if(pwd==conPwd){
+				$('.pwdLblEd').hide();
+				$('#edName').prop( "disabled", false);
+				$('#btnEdit').prop( "disabled", false);
+			}
+		});
 	});
 
 	function checkLength(el) {
@@ -70,6 +86,14 @@
 	  }
 	}
 
+	function confirmPwordEd(el) {
+	  if (el.value.length < 6) {
+	    alert("length must be 6 characters or greater")
+	  }
+	  else if (el.value.length >= 6) {
+	  	$('#tfConfEd').prop( "disabled", false);
+	  }
+	}
 </script>
 
 <div class="container">
@@ -201,7 +225,7 @@
 						<form action="user_management.php" method="post">
 							<div class="form-group">
 							<label for = "editUname">Username</label>
-								<select class = "form-control" id="editUname" name = "editUname" >
+								<select class = "form-control" id="editUname" name = "editUname">
 									<?php
 
 										$temp_uId = 0;
@@ -235,18 +259,22 @@
 							</div>
 							<div class="form-group">
 								<label>Password</label>
-								<input type="password" class="form-control" name="editPword">
+								<input type="password" class="form-control" id="editPword" name="editPword" onblur = "checkLength(this)"  minlength="6">
 							</div>
 							<div class="form-group">
+								<label>Confirm Password</label><p class="text-danger">(Re-enter password to confirm)</p>
+								<label class="bg-danger pwdLblEd">Password mismatch</label>
+								<input type="password" class="form-control" name="confirmPwordEd" onblur="checkLength(this)"  minlength="6" id = "tfConfEd" >
+							<div class="form-group">
 								<label>Name</label>
-								<input type="text" class="form-control" name="editName">
+								<input type="text" class="form-control" id = "edName" name="editName" disabled>
 							</div>
-							<div form-group>
+							<!--div form-group>
 								<label>Position</label>
 								<input type="text" class="form-control" name="editPos">
-							</div>
+							</div-->
 							<br>
-							<button type="submit" name="btnEditUser" class="btn btn-primary">Save</button>
+							<button type="submit" id = "btnEdit" name="btnEditUser" class="btn btn-primary" disabled>Save</button>
 						</form>
 					</div>				
 				</div>

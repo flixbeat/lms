@@ -28,8 +28,11 @@
 				$this->loadModel('ModelAddOverDueFines');
 				$this->model = new ModelAddOverDueFines();
 				$this->model->addOverDueFine($bId,$sId,$dDate,$rDate,$amt);
-				echo "<script>alert('Book Fine Information has been recorded.')</script>";
+				echo "<script>alert('Book Fine Information has been recorded.')
+						window.location.replace('admin.php');
+				</script>";
 				$this->model->updateBorrowRecord($bId);
+
 			}
 		}
 	}

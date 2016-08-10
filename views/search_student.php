@@ -7,7 +7,7 @@
 				<div class = "panel-body">
 					<div class = "form-group">
 						<div class = "input-group">
-							<input type = "text" class = "form-control" id="sNum" name = "sNum" placeholder ='Student Number' required>
+							<input type = "text" class = "form-control" id="sNum" name = "sNum" placeholder = "Student LRN" required>
 							<div class="input-group-addon"><span class = "glyphicon glyphicon-search"></span> Search</div>
 						</div>
 					</div>
@@ -27,14 +27,14 @@
 				if($data['result']->num_rows==0){
 					echo"<div class='alert alert-danger'>
 							<a href='#' class='close' data-dismiss='alert' aria-label='close'>close</a>
-							<strong>Warning!</strong> Student number does not exists. No Records. 
+							<strong>Warning!</strong> Student LRN does not exists. No Records. 
 						</div>";
 				}
 				else{
 					echo"<table class ='table'>
 						<tr>
 							<thead>
-								<th>Student Number</th>
+								<th>Student LRN</th>
 								<th>Student Name</th>	
 								<th>Grade Level</th>		
 								<th>Section</th>

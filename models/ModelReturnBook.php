@@ -111,8 +111,8 @@
 		}
 
 		public function selDeliquentRule(){
-			$qry = "SELECT tbl_rules.value FROM tbl_rules tblDel WHERE rule = 'deliquent_day_count'";
-			$res = $this->con->query();
+			$qry = "SELECT tbl_rules.value FROM tbl_rules WHERE rule = 'deliquent_day_count'";
+			$res = $this->con->query($qry);
 			
 			if($res->num_rows == 1){
 				while($row = $res->fetch_assoc()){

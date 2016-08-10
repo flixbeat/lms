@@ -44,7 +44,6 @@
 							<br>System Rules
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>

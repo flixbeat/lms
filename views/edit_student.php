@@ -10,7 +10,7 @@
 			</div>
 				<form action="student_edit.php" method="get">
 					<div class="panel-body">
-						<label>Student Number</label>
+						<label>Student LRN</label>
 						<input type="text" class="form-control" name = "tfSNum" id = "tfSNum" required><br>
 						<div class="pull-right">
 							<button class="btn btn-primary" name="btnNxt">Next <span class="glyphicon glyphicon-share-alt"></span></button>

@@ -26,7 +26,7 @@
 					</button>
 					<h4 class = "modal-title" id = "manage-book">Student Borrowing Records</h4>
 					<br>
-					<p><label>Student Number:</label> <?=$data['sNum']?></p>
+					<p><label>Student LRN:</label> <?=$data['sNum']?></p>
 				</div>
 				<div class = "modal-body" id = "divRes">
 
@@ -71,7 +71,7 @@
 			var data = $(elementId).html();
 			
 			var mywindow = window.open('', 'my div', 'height=640,width=800');
-	        mywindow.document.write('<html><head><title>Student ID: <?=$data["sNum"]?> library transactions?></title>');
+	        mywindow.document.write('<html><head><title>Student ID: <?=$data["sNum"]?> library transactions.</title>');
 	        mywindow.document.write('<link rel = "stylesheet" href = "css/tabular.css"/>');
 	        mywindow.document.write('</head><body >');
 	        mywindow.document.write(data);

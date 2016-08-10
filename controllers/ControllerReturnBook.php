@@ -45,17 +45,20 @@
 						$modelR->selStudent($sNum);
 						$modelR->selOverDueDays($modelR->id);
 						$modelR->selFineRule($bkNum);
+						$modelR->selDeliquentRule();
 						$totDueDays = abs($modelR->totalDueDays);
-						$modelR->addDeliquent($sNum,$totDueDays);
+						
 						$delqRule = $modelR->delqRule;
 						
+
 						$finePrice = $modelR->finePrice;
 						$totalFine = ($totDueDays*$finePrice);
 
-						if($delqRule >= $totDueDays){
+						if($delqRule <= $totDueDays){
 							$modelR->addDeliquent($sNum,$totDueDays);
 							echo "<script>alert('Student was added at the deliquent borrower records')</script>";
 						}
+
 						$data['idSnum'] = $sNum;
 						$data['sName'] = $modelR->sName;
 						$data['grd'] = 	$modelR->grdId;

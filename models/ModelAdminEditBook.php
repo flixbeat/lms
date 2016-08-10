@@ -184,7 +184,7 @@
 					$query = "UPDATE tbl_books SET isbn = '$isbn', title = '$title', author = $authorId, publisher = $publisherId,
 					short_text = '$desc', pages = '$pages', book_year = '$year', date_received = '$dateReceived', 
 					edition = '$edition', cost_price = '$cost', source_of_fund = '$sourceId', class = '$classId', qty = '$qty', 
-					availability = '$qty', remarks = '$remarksId', copy = '$copy', tracing = '$tracing', special_features = '$sf',
+					availability = '$qty', remarks = '$remarksId', tracing = '$tracing', special_features = '$sf',
 					is_fiction = '$isFiction'  
 					WHERE id = $bookId";
 					$this->con->query($query) or die($this->con->error);

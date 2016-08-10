@@ -115,6 +115,13 @@
 					echo $pwd = md5($oldPwd);
 				}
 			}		
+
+			else if($action == 'chkOldPwdEd'){
+				if(isset($_POST['oldPwd'])){
+					$oldPwd = $_POST['oldPwd'];
+					echo $pwd = md5($oldPwd);
+				}
+			}
 			# mine
 			else if($action == 'printAuthorCard'){
 				$bookId = $_POST['bookId'];

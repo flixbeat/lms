@@ -59,6 +59,7 @@
 		 		$('.btnSub').prop( "disabled", false);
 		 	}
 		 	if($(this).val() != $("#tfNewPwd").val()){
+		 		alert('Password mismatch');
 		 		$('.btnSub').prop( "disabled", true);
 		 	}
 		});
